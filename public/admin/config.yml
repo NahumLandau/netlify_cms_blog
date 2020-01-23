@@ -13,8 +13,15 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Body", name: "body", widget: "markdown"}
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options: ["Radar", "Videos"]
+  - name: "speakers"
+    label: "Speakers"
+    folder: "content/speakers"
+    create: true
+    slug: "{{name}}"
+    identifier_field: name
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Company", name: "company", widget: "string"}
+      - {label: "Subject", name: "subject", widget: "string"}
+      - {label: "Image", name: "image", widget: "image", allow_multiple: false}
 
