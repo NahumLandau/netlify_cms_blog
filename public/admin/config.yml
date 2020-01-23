@@ -4,15 +4,6 @@ backend:
 media_folder: public/img
 public_folder: img
 collections:
-  - name: "posts"
-    label: "Post"
-    folder: "content/blog"
-    create: true
-    slug: "{{title}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Body", name: "body", widget: "markdown"}
   - name: "speakers"
     label: "Speakers"
     folder: "content/speakers"
