@@ -15,20 +15,21 @@ const Speakers: NextPage<ISpeakersProps> = props => {
 
       <div>Speakers</div>
 
+      <ul>
       {speakers.map(speaker => {
         const { name, company, role, image } = speaker.attributes;
         return (
-          <ul>
-            <li>
+          
+            <li key={name}>
               <h1>{name}</h1>
               <h3>{company}</h3>
               <h5>{role}</h5>
               <img src={image} width="150"/>
             </li>
-          </ul>
         )
       })
       }
+      </ul>
     </MainLayout>
   );
 };
