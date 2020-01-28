@@ -2,17 +2,19 @@ import React from "react";
 import MainLayout from "../../layouts/main";
 import styled from "styled-components";
 
-import SectionOne from './partials/sectionOne';
-import SectionTwo from './partials/sectionTwo';
-import SectionThree from './partials/sectionThree';
+import SectionOne from "./partials/sectionOne";
+import SectionTwo from "./partials/sectionTwo";
+import SectionThree from "./partials/sectionThree";
+import SectionFour from "./partials/sectionFour";
 
 const Home = () => (
   <MainLayout>
     <Styles>
       <div className="container">
         <SectionOne />
-        <SectionTwo/>
-        <SectionThree/>
+        <SectionTwo />
+        <SectionThree />
+        <SectionFour />
       </div>
     </Styles>
   </MainLayout>
