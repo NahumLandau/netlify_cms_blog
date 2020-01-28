@@ -18,14 +18,13 @@ const links = [
 
 const Nav = () => {
   let [isScrolling, setScroll] = useState(false);
-  let [showNavGetTicket, setNavGetTicket] = useState(false)
+  let [showNavGetTicket, setNavGetTicket] = useState(false);
 
   useEffect(() => {
     window.onscroll = () => {
       setScroll(window.document.documentElement.scrollTop > 30);
       setNavGetTicket(window.document.documentElement.scrollTop > 500);
-    }
-      
+    };
   }, []);
 
   const router = useRouter();
@@ -48,8 +47,13 @@ const Nav = () => {
         })}
       </ul>
 
-      <div className={`buy-ticket-btn ${showNavGetTicket ? 'active' : ''}`}>
-        <a>BUY TICKET</a>
+      <div className={`buy-ticket-btn ${showNavGetTicket ? "active" : ""}`}>
+        <a
+          href="https://www.eventbrite.com/e/fullstack-tech-radar-day-tickets-55203831145#tickets"
+          target="_blank"
+        >
+          BUY TICKET
+        </a>
       </div>
 
       <style jsx>{`

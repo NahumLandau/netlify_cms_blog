@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import SectionOne from './partials/sectionOne';
 import SectionTwo from './partials/sectionTwo';
+import SectionThree from './partials/sectionThree';
 
 const Home = () => (
   <MainLayout>
@@ -11,7 +12,7 @@ const Home = () => (
       <div className="container">
         <SectionOne />
         <SectionTwo/>
-        
+        <SectionThree/>
       </div>
     </Styles>
   </MainLayout>
