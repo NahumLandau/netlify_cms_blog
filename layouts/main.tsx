@@ -11,6 +11,7 @@ const Main: React.FunctionComponent<IMainProps> = ({ children }) => {
             <Head>
                 <title>Home</title>
                 <link rel="icon" href="/favicon.ico" />
+                <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900" rel="stylesheet"></link>
             </Head>
 
             <Nav />
