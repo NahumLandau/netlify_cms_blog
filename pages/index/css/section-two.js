@@ -8,6 +8,7 @@ const Styles = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
   h3, h4 {
     font-size: 50px;
@@ -34,6 +35,7 @@ const Styles = styled.div`
     color: #ffffff;
     justify-content: space-evenly;
     width: 90%;
+    margin-top: 50px;
   }
   .statistic > div {
     border-right: dotted white 1px;
@@ -48,6 +50,19 @@ const Styles = styled.div`
     font-weight: normal;
     margin: 5px;
     text-align:center;
+  }
+  .become-sponsor-btn{
+    margin-top: 110px;
+    font-size: 16px;
+    padding: 8px 45px 8px 35px;
+    background-color: #2c2929;
+    position: relative;
+    top: 60px;
+  }
+  .become-sponsor-btn a {
+    color: #ffffff;
+    text-decoration: none;
+    user-select: none;
   }
 `;
 
