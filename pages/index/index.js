@@ -18,7 +18,7 @@ const Home = props => (
         <SectionThree />
         <SectionFour />
         <SectionFive speakers={props.speakers} />
-        <SectionSix udpates={props.updates} />
+        <SectionSix updates={props.updates} />
       </div>
     </Styles>
   </MainLayout>
@@ -33,7 +33,8 @@ Home.getInitialProps = async () => {
   // get all updates
   ctx = require.context("../../content/updates", false, /\.md$/);
   keys = ctx.keys();
-  const updates = keys.map(ctx);
+  // include the file name as url for routing
+  const updates = keys.map(ctx).map((u, i) => ({ ...u, url: keys[i] }));
 
   return { speakers, updates };
 };
