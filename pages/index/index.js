@@ -8,6 +8,7 @@ import SectionThree from "./partials/sectionThree";
 import SectionFour from "./partials/sectionFour";
 import SectionFive from "./partials/sectionFive";
 import SectionSix from "./partials/sectionSix";
+import SectionSeven from "./partials/sectionSeven";
 
 const Home = props => (
   <MainLayout>
@@ -19,6 +20,7 @@ const Home = props => (
         <SectionFour />
         <SectionFive speakers={props.speakers} />
         <SectionSix updates={props.updates} />
+        <SectionSeven />
       </div>
     </Styles>
   </MainLayout>
@@ -36,7 +38,12 @@ Home.getInitialProps = async () => {
   // include the file name as url for routing
   const updates = keys.map(ctx).map((u, i) => ({ ...u, url: keys[i] }));
 
-  return { speakers, updates };
+  // get all sponsors
+  ctx = require.context("../../content/sponsors", false, /\.md$/);
+  keys = ctx.keys();
+  const sponsors = keys.map(ctx);
+
+  return { speakers, updates, sponsors };
 };
 
 export default Home;
