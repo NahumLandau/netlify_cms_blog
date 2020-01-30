@@ -11,8 +11,13 @@ collections:
     slug: "{{name}}"
     identifier_field: name
     fields:
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Company", name: "company", widget: "string"}
-      - {label: "Subject", name: "subject", widget: "string"}
-      - {label: "Image", name: "image", widget: "image", allow_multiple: false}
-
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Position", name: "position", widget: "string" }
+      - { label: "Subject", name: "subject", widget: "string" }
+      - {
+          label: "Image",
+          name: "image",
+          widget: "image",
+          allow_multiple: false,
+        }
