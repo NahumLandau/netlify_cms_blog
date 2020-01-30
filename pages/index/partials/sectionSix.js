@@ -1,7 +1,8 @@
 import React from "react";
 import Styles from "../css/section-six";
 
-const SectionSix = () => {
+const SectionSix = props => {
+  console.log(props);
   return (
     <Styles>
       <div className="section-six">

@@ -18,7 +18,7 @@ const Home = props => (
         <SectionThree />
         <SectionFour />
         <SectionFive speakers={props.speakers} />
-        <SectionSix />
+        <SectionSix udpates={props.updates} />
       </div>
     </Styles>
   </MainLayout>
@@ -26,11 +26,16 @@ const Home = props => (
 
 Home.getInitialProps = async () => {
   // get all speakers
-  const ctx = require.context("../../content/speakers", false, /\.md$/);
-  const keys = ctx.keys();
+  let ctx = require.context("../../content/speakers", false, /\.md$/);
+  let keys = ctx.keys();
   const speakers = keys.map(ctx);
 
-  return { speakers };
+  // get all updates
+  ctx = require.context("../../content/updates", false, /\.md$/);
+  keys = ctx.keys();
+  const updates = keys.map(ctx);
+
+  return { speakers, updates };
 };
 
 export default Home;
