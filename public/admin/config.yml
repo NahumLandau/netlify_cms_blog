@@ -31,3 +31,19 @@ collections:
       - { label: "Teaser", name: "teaser", widget: "string" }
       - { label: "Content", name: "content", widget: "markdown" }
       - { label: "Date", name: "date_published", widget: "date" }
+
+  - name: "sponsors"
+    label: "Sponsors"
+    folder: "content/sponsors"
+    create: true
+    slug: "{{name}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Logo", name: "logo", widget: "image", allow_multiple: false }
+      - {
+          label: "Type",
+          name: "type",
+          widget: "select",
+          options: ["sponsor", "exhibitor", "media"],
+        }
