@@ -24,7 +24,7 @@ collections:
   - name: "updates"
     label: "Updates"
     folder: "content/updates"
-    cretae: true
+    create: true
     slug: "{{title}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
