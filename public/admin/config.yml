@@ -21,3 +21,12 @@ collections:
           widget: "image",
           allow_multiple: false,
         }
+  - name: "updates"
+    label: "Updates"
+    folder: "content/updates"
+    cretae: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Content", name: "content", widget: "markdown" }
+      - { label: "Date", name: "date_published", widget: "date" }
