@@ -10,6 +10,7 @@ import SectionFive from "./partials/sectionFive";
 import SectionSix from "./partials/sectionSix";
 import SectionSeven from "./partials/sectionSeven";
 import SectionEight from "./partials/sectionEight";
+import SectionNine from "./partials/sectionNine";
 
 const Home = props => (
   <MainLayout>
@@ -22,7 +23,8 @@ const Home = props => (
         <SectionFive speakers={props.speakers} />
         <SectionSix updates={props.updates} />
         <SectionSeven />
-        <SectionEight />
+        <SectionEight sponsors={props.sponsors} />
+        <SectionNine />
       </div>
     </Styles>
   </MainLayout>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Styles = styled.div`
   .section-eight {
     background: #ffffff;
-    padding: 50px 0 0 60px;
+    padding: 50px 0 60px 0;
     text-align: center;
   }
   h2 {
@@ -16,11 +16,12 @@ const Styles = styled.div`
     font-weight: normal;
   }
   .list-inline {
+    margin: 0;
     padding-left: 0;
     list-style: none;
     margin-left: -5px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
   }
   .list-inline li {
     display: flex;
@@ -36,6 +37,9 @@ const Styles = styled.div`
     transition: all 0.3s;
     filter: grayscale(1);
     overflow: hidden;
+  }
+  .list-inline.sponsors li {
+    min-height: 213px;
   }
   .hover14::before {
     position: absolute;
@@ -59,11 +63,20 @@ const Styles = styled.div`
     -webkit-transform: skewX(-25deg);
     transform: skewX(-25deg);
   }
+  .hover14:hover::before {
+    animation: shine 0.75s;
+  }
+  @keyframes shine {
+    100% {
+      left: 125%;
+    }
+  }
   .list-inline li a {
     flex-grow: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    cursor: pointer;
   }
   .list-inline li .partner-name {
     bottom: 8px;
@@ -74,6 +87,24 @@ const Styles = styled.div`
   }
   .list-inline li:hover {
     filter: grayscale(0);
+  }
+  .partner-logo {
+    padding: 10px;
+  }
+  .partner-logo img {
+    width: 100%;
+  }
+  .become-sponsor-btn {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 45px 8px 35px;
+    background-color: #2c2929;
+    user-select: none;
+    cursor: pointer;
+    color: #ffffff;
+    margin: 10px;
+    margin-top: 40px;
   }
 `;
 

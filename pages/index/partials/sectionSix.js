@@ -4,7 +4,6 @@ import { urlFromFileName } from "../../../helpers";
 
 const SectionSix = props => {
   const { updates = [] } = props;
-  console.log(props);
   return (
     <Styles>
       <div className="section-six">
