@@ -47,7 +47,7 @@ const SectionFive = props => {
                 company
               } = speaker.attributes;
               return (
-                <li key={name}>
+                <li key={last_name}>
                   <img src={image} />
                   <h3>{`${first_name} ${last_name}`}</h3>
                   <h4>{position}</h4>

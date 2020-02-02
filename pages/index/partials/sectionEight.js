@@ -3,7 +3,7 @@ import Styles from "../css/section-eight";
 
 const SectionEight = props => {
   const { sponsors = [] } = props;
-  const sponsors = sponsors.filter(s => s.attributes.type === "sponsor");
+  const sponsor = sponsors.filter(s => s.attributes.type === "sponsor");
   const exhibitors = sponsors.filter(s => s.attributes.type === "exhibitor");
   const media = sponsors.filter(s => s.attributes.type === "media");
 
@@ -27,7 +27,7 @@ const SectionEight = props => {
 
         <h3>SPONSORS</h3>
         <ul className="list-inline sponsors">
-          {sponsors.map(partner => (
+          {sponsor.map(partner => (
             <Partner key={partner.attributes.name} {...partner.attributes} />
           ))}
         </ul>
