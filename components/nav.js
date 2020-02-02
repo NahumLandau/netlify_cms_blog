@@ -5,7 +5,12 @@ import { useRouter } from "next/router";
 const links = [
   { href: "/", label: "Home" },
   { href: "/radar", label: "Radar" },
-  { href: "/videos", label: "Videos" },
+  {
+    href:
+      "https://www.youtube.com/channel/UCV7lV9Lq2sc7t0QEKS4xH7A/playlists?view=50&sort=dd&shelf_id=2",
+    label: "Videos",
+    target: "_blank"
+  },
   { href: "/speakers", label: "Speakers" },
   { href: "/schedule", label: "Schedule" },
   { href: "/updates", label: "Updates" },
@@ -35,12 +40,14 @@ const Nav = () => {
       </a>
 
       <ul>
-        {links.map(({ key, href, label }) => {
+        {links.map(({ key, href, label, target = null }) => {
           const isActive = router.pathname === href;
           return (
             <li key={key}>
-              <Link href={href}>
-                <a className={isActive ? "active" : ""}>{label}</a>
+              <Link href={href} prefetch={false}>
+                <a className={isActive ? "active" : ""} target={target}>
+                  {label}
+                </a>
               </Link>
             </li>
           );
@@ -71,6 +78,7 @@ const Nav = () => {
           align-items: center;
           justify-content: space-around;
           z-index: 999999;
+          top: 0;
         }
         nav.scrolling {
           box-shadow: 1px 2px 8px -2px rgba(0, 0, 0, 0.8);
