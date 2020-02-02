@@ -39,11 +39,17 @@ const SectionFive = props => {
         <div className="speakers">
           <ul>
             {speakers.map(speaker => {
-              const { name, position, image, company } = speaker.attributes;
+              const {
+                first_name,
+                last_name,
+                position,
+                image,
+                company
+              } = speaker.attributes;
               return (
                 <li key={name}>
                   <img src={image} />
-                  <h3>{name}</h3>
+                  <h3>{`${first_name} ${last_name}`}</h3>
                   <h4>{position}</h4>
                   <h4 className="company">{company}</h4>
                 </li>

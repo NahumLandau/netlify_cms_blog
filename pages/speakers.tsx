@@ -20,25 +20,28 @@ const Speakers: NextPage<ISpeakersProps> = props => {
         <ul className="speakers">
           {speakers.map(speaker => {
             const {
-              firstName,
-              lastName,
+              first_name,
+              last_name,
               company,
-              role,
+              position,
+              subject,
               image
             } = speaker.attributes;
             return (
-              <li key={name}>
+              <li key={`${first_name}_${last_name}`}>
                 <div>
                   <div className="head">
                     <img src={image} />
                   </div>
                   <div className="name">
-                    <h3>{firstName}</h3>
-                    <h3>{lastName}</h3>
+                    <h3>
+                      {first_name}
+                      <span>{last_name}</span>
+                    </h3>
                   </div>
 
                   <h3>{company}</h3>
-                  <h5>{role}</h5>
+                  <h5>{position}</h5>
                 </div>
               </li>
             );
@@ -89,6 +92,7 @@ const Styles = styled.div`
     margin-left: 26px;
     padding: 0 30px;
     box-sizing: border-box;
+    position: relative;
   }
   .speakers li > div {
     cursor: pointer;
@@ -97,5 +101,27 @@ const Styles = styled.div`
   .speakers li .head {
     height: 200px;
     overflow: hidden;
+  }
+  .speakers li .head img {
+    width: 100%;
+  }
+  .name {
+    position: absolute;
+    top: 130px;
+    left: 50px;
+  }
+  .name h3 {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 300;
+    transition: all 0.3s;
+    // transform: translateY(-10px);
+    word-spacing: -2px;
+    text-shadow: 0.5px 0.5px 0.5px #000;
+    color: #ffffff;
+  }
+  .name h3 span {
+    display: block;
+    font-weight: 600;
   }
 `;
