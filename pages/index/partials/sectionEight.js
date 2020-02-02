@@ -2,11 +2,10 @@ import React from "react";
 import Styles from "../css/section-eight";
 
 const SectionEight = props => {
-  const sponsors = props.sponsors.filter(s => s.attributes.type === "sponsor");
-  const exhibitors = props.sponsors.filter(
-    s => s.attributes.type === "exhibitor"
-  );
-  const media = props.sponsors.filter(s => s.attributes.type === "media");
+  const { sponsors = [] } = props;
+  const sponsors = sponsors.filter(s => s.attributes.type === "sponsor");
+  const exhibitors = sponsors.filter(s => s.attributes.type === "exhibitor");
+  const media = sponsors.filter(s => s.attributes.type === "media");
 
   return (
     <Styles>
