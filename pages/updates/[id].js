@@ -1,6 +1,10 @@
 import React from "react";
 
 const Post = props => {
+  if (!props.post) {
+    return <div>Page not Found</div>;
+  }
+
   const {
     post: {
       attributes: { title, content }
@@ -10,7 +14,12 @@ const Post = props => {
 };
 
 Post.getInitialProps = async (req, res) => {
-  let post = require(`../../content/updates/${req.query.id}.md`);
-  return { post };
+  const fileName = req.query.id;
+  try {
+    let post = require(`../../content/updates/${fileName}.md`);
+    return { post };
+  } catch (error) {
+    return {};
+  }
 };
 export default Post;
