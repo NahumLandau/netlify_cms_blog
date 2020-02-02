@@ -9,9 +9,10 @@ collections:
     folder: "content/speakers"
     create: true
     slug: "{{name}}"
-    identifier_field: name
+    identifier_field: last_name
     fields:
-      - { label: "Name", name: "name", widget: "string" }
+      - { label: "First name", name: "first_name", widget: "string" }
+      - { label: "Last name", name: "last_name", widget: "string" }
       - { label: "Company", name: "company", widget: "string" }
       - { label: "Position", name: "position", widget: "string" }
       - { label: "Subject", name: "subject", widget: "string" }
@@ -41,6 +42,7 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Logo", name: "logo", widget: "image", allow_multiple: false }
+      - { label: "Link", name: "link", widget: "string" }
       - {
           label: "Type",
           name: "type",
