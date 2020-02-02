@@ -8,7 +8,7 @@ collections:
     label: "Speakers"
     folder: "content/speakers"
     create: true
-    slug: "{{name}}"
+    slug: "{{first_name}}-{{last_name}}"
     identifier_field: last_name
     fields:
       - { label: "First name", name: "first_name", widget: "string" }
