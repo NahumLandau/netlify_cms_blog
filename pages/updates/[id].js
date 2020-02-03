@@ -1,5 +1,6 @@
 import React from "react";
 import Error from "next/error";
+import marked from "marked";
 
 const Post = props => {
   if (!props.post) {

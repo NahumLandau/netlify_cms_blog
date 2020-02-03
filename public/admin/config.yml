@@ -78,3 +78,19 @@ collections:
             ],
           multiple: true,
         }
+  - name: "radar_contributors"
+    label: "radar/contributors"
+    folder: "content/radar/contributors"
+    create: true
+    slug: "{{first_name}}-{{last_name}}"
+    identifier_field: last_name
+    fields:
+      - { label: "First name", name: "first_name", widget: "string" }
+      - { label: "Last name", name: "last_name", widget: "string" }
+      - { label: "Position", name: "position", widget: "string" }
+      - {
+          label: "Image",
+          name: "image",
+          widget: "image",
+          allow_multiple: false,
+        }

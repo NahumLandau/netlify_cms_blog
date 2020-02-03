@@ -3,6 +3,7 @@ import MainLayout from "../layouts/main";
 import { NextPage } from "next";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
+import Person from "../components/Person";
 
 interface ISpeakersProps {
   speakers: Array<any>;
@@ -22,36 +23,7 @@ const Speakers: NextPage<ISpeakersProps> = props => {
 
         <ul className="speakers">
           {speakers.map(speaker => {
-            const {
-              first_name,
-              last_name,
-              company,
-              position,
-              subject,
-              image
-            } = speaker.attributes;
-            return (
-              <Fade top distance="10px">
-                <li key={`${first_name}_${last_name}`}>
-                  <div>
-                    <div className="head">
-                      <img src={image} />
-                      <div className="overlay"></div>
-                      <div className="name">
-                        <h3>
-                          {first_name}
-                          <span>{last_name}</span>
-                        </h3>
-                      </div>
-                      <h4>{company}</h4>
-                    </div>
-                    <div className="bottom">
-                      <span>{subject}</span>
-                    </div>
-                  </div>
-                </li>
-              </Fade>
-            );
+            return <Person {...speaker.attributes} />;
           })}
         </ul>
       </Styles>
