@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Devices} from "../../../layouts/styled-components";
 
 const Styles = styled.div`
   .container {
@@ -11,98 +12,26 @@ const Styles = styled.div`
   .section-one > div:nth-child(1) {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
   }
-  .radar-wrapper {
-    width: 510px;
-    height: 510px;
-    padding-left: 40px;
-  }
-  .radar-outer {
-    width: 490px;
-    height: 490px;
-    position: relative;
-  }
-  .radar-outer .text {
-    width: 490px;
-    height: 490px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: url(../img/radar_text.png);
-  }
-  .radar-outer .radar {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    background: radial-gradient(
-      ellipse at center,
-      transparent 0%,
-      transparent 0.5%,
-      transparent 13%,
-      #cccccc 13.5%,
-      transparent 14%,
-      transparent 25%,
-      #cccccc 25.5%,
-      transparent 26%,
-      transparent 26%,
-      transparent 35%,
-      #cccccc 35.5%,
-      transparent 36%,
-      transparent 36%,
-      transparent 46%,
-      #cccccc 46.5%,
-      transparent 47%,
-      transparent 47%,
-      transparent 58%,
-      #cccccc 58.5%,
-      transparent 59%,
-      rgba(125, 185, 232, 0) 100%
-    );
-    overflow: hidden;
-  }
-  .spinner-outer {
-    position: absolute;
-    width: 82%;
-    height: 82%;
-    border-radius: 50%;
-    top: 44px;
-    left: 45px;
-    border: solid 1px transparent;
-    overflow: hidden;
-    -webkit-transform: translateZ(0);
-    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
-  }
-  .radar-outer .spinner {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    margin: 50%;
-    background: linear-gradient(55deg, rgba(0, 192, 0, 0) 30%, #ff6f00) 0% 0/50%
-      50%;
-    background-repeat: no-repeat;
-    transform-origin: 0 0;
-    animation: scan 2s linear forwards;
-    border-right: 1px solid #fe885f;
+  .section-one > div:nth-child(1) > .text {
+    width: 50%;
+    margin-top: 90px;
+    margin-left: 20px;
   }
 
-  .radar-outer .octopus {
-    position: absolute;
-    margin: 60px 90px;
-    content: url(../img/radar_timi.png);
-    width: 65%;
-    height: 65%;
-    animation: elevate 2s ease-in-out forwards alternate;
-    animation-iteration-count: 2;
+  .section-one-container >div:nth-child(1) {
+    top: 70px;
+    position:relative;
+    width: 50%;
+    left:110px;
   }
-
-  .radarContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 90px;
-    text-align: unset;
+  .discount-notification {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 15px;
   }
   h1 {
     color: #ffffff;
@@ -110,15 +39,18 @@ const Styles = styled.div`
     font-size: 50px;
     line-height: 1;
     margin: 10px 0;
+    margin-bottom: 42px;
   }
   h2 {
     color: #ff6f00;
     font-weight: 900;
     font-size: 20px;
+    margin-bottom: 24px;
   }
   h3 {
     color: #ffffff;
     font-size: 18px;
+    font-weight: 600;
   }
   .orange {
     color: #ff6f00;
@@ -129,22 +61,24 @@ const Styles = styled.div`
     display: block;
   }
   .get-tickets-btn a {
-    background-color: #757472;
-    color: white !important;
-    margin-top: 30px;
     position: relative;
     display: block;
+    background: linear-gradient(90deg, #E87221 0%, #E9A35C 98%);
+    border-radius: 34px;
+    color: white;
+    font-size: 15px;
+    line-height: 15px;
     text-decoration: none;
+    text-transform: uppercase;
     width: fit-content;
     height: fit-content;
-    font-size: 16px;
-    padding: 8px 45px 8px 35px;
-    background-color: #ff6f00;
+    padding: 10px 17px;
     user-select: none;
     cursor: pointer;
+    font-style: normal;
+    font-weight: bold;
     transition: 1s all;
-    text-transform: uppercase;
-    font-weight: 700;
+    margin-top: 30px;
   }
   .icon-arrow-down {
     width: 32px;
@@ -224,6 +158,71 @@ const Styles = styled.div`
       -webkit-transform: translate(0px, 0px);
       -moz-transform: translateY(0px);
       -o-transform: translateY(0px);
+    }
+  }
+
+  @media (${Devices.mobile}) {
+    .section-one {
+      padding-bottom: 60px;
+    }
+    .section-one > div:nth-child(1) {
+      flex-direction: column;
+      left: 0;
+      width: 100%;
+    }
+    .section-one-container >div:nth-child(1){
+      left:0;
+      top:0;
+      width:100%;
+    }
+    .section-one-container {
+      width:100%;
+      left:0
+    }
+    .section-one .radar-wrapper {
+      width: unset;
+      height: unset;
+      padding: 0;
+    }
+    .section-one .radar-outer {
+      width: 320px;
+      height: 320px;
+      margin: 0 auto;
+    }
+    .section-one .radar-outer .text {
+      width: 100%;
+      height: 100%;
+    }
+    .section-one > div:nth-child(1) > .text {
+      width: 100%;
+      margin: 0;
+    }
+    .section-one .spinner-outer {
+      top: 28px;
+      left: 29px;
+    }
+    .section-one .radar-outer .octopus {
+      margin: 35px 58px;
+    }
+    .text {
+      text-align: center;
+    }
+    .text h1 {
+      font-size: 32px;
+      margin: 10px auto;
+      margin-top: 40px;
+    }
+    .text h2 {
+      font-size: 24px;
+    }
+    .text h3 {
+      font-size: 16px;
+    }
+    .get-tickets-btn a {
+      margin: 30px auto;s
+    }
+    .icon-arrow-down {
+      display: none;
     }
   }
 `;

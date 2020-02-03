@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
+import { Devices } from "../layouts/styled-components";
 
 const Person = ({
   first_name,
@@ -122,5 +123,10 @@ const Styles = styled.li`
     padding-top: 15px;
     overflow: hidden;
     text-align: left;
+  }
+
+  @media (${Devices.mobile}) {
+    width: 100%;
+    margin: 10px 0;
   }
 `;

@@ -1,12 +1,84 @@
 import styled from "styled-components";
+import {Devices} from "../../../layouts/styled-components";
 
 const Styles = styled.div`
   .section-eight {
     background: #ffffff;
-    padding: 50px 0 60px 0;
-    text-align: center;
+    padding: 50px 0 60px 100px;
+    text-align: left;
+    color: #ffffff;
+    background-image: url(/img/sponsors-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   h2 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 50px;
+    margin-bottom: 27px;
+  }
+  p {
+    width: 440px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 20px;
+  }
+  .get-tickets-button {
+    position: relative;
+    display: block;
+    background: linear-gradient(90deg, #e87221 0%, #e9a35c 98%);
+    border-radius: 34px;
+    color: white;
+    font-size: 15px;
+    line-height: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 17px;
+    user-select: none;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: bold;
+    transition: 1s all;
+  }
+  p:nth-of-type(2) {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  a {
+    color: #f5c653;
+  }
+  .seperator {
+    height: 1px;
+    width: 440px;
+    background-color: white;
+  }
+  .main-orgenizers {
+    margin-top: 28px;
+    margin-bottom: 57px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .main-orgenizers > div {
+    margin-right: 26px;
+  }
+  .white-logo {
+    display: block;
+  }
+  .black-logo {
+    display: none;
+  }
+
+  /* h2 {
     font-size: 50px;
     font-weight: 900;
   }
@@ -105,6 +177,54 @@ const Styles = styled.div`
     color: #ffffff;
     margin: 10px;
     margin-top: 40px;
+  }*/
+
+  @media (${Devices.mobile}) {
+    .section-eight {
+      background: #ffffff;
+      width: 100%;
+      padding: 50px 0 10px;
+      color: #000000;
+      text-align: center;
+    }
+    h2 {
+      font-size: 30px;
+      line-height: 50px;
+      margin-bottom: 10px;
+    }
+    p {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .get-tickets-button {
+      margin: 0 auto;
+    }
+    .list-inline {
+      flex-wrap: wrap;
+    }
+    .list-inline li {
+      width: 40%;
+    }
+    .seperator {
+      background: #000000;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .main-orgenizers {
+      align-items: center;
+      flex-direction: column;
+    }
+    .main-orgenizers div {
+      margin: 0;
+      text-align: center;
+    }
+    .white-logo {
+      display: none;
+    }
+    .black-logo {
+      display: block;
+    }
   }
 `;
 

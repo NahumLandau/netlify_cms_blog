@@ -4,6 +4,7 @@ import MainLayout from "../../layouts/main";
 import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 import { urlFromFileName } from "../../helpers";
+import { Devices } from "../../layouts/styled-components";
 
 interface IUpdatesProps {}
 
@@ -123,5 +124,23 @@ const Styles = styled.div`
     margin-top: 19px;
     font-size: 15px;
     font-weight: 300;
+  }
+
+  @media (${Devices.mobile}) {
+    header {
+      min-height: 120px;
+      height: 120px;
+    }
+    header h1 {
+      font-size: 37px;
+      margin-left: 20px;
+      margin-top: 60px;
+    }
+    ul {
+      width: 80%;
+    }
+    li a h3 {
+      font-size: 28.4375px;
+    }
   }
 `;

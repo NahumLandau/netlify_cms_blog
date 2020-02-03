@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
+import {Devices} from "../layouts/styled-components";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/radar", label: "Radar" },
-  {
-    href:
-      "https://www.youtube.com/channel/UCV7lV9Lq2sc7t0QEKS4xH7A/playlists?view=50&sort=dd&shelf_id=2",
-    label: "Videos",
-    target: "_blank"
-  },
-  { href: "/speakers", label: "Speakers" },
-  { href: "/schedule", label: "Schedule" },
-  { href: "/updates", label: "Updates" },
-  { href: "/#sponsors", label: "Sponsors" },
-  { href: "/venue", label: "Venue" }
+  {href: "/", label: "Home"},
+  {href: "/radar", label: "Tech Radar", showInMobile: false},
+  // {
+  //   href:
+  //     "https://www.youtube.com/channel/UCV7lV9Lq2sc7t0QEKS4xH7A/playlists?view=50&sort=dd&shelf_id=2",
+  //   label: "Videos",
+  //   target: "_blank"
+  // },
+  {href: "https://2019.techradarday.com/", label: "2019", target: "_blank"}
+  // { href: "/speakers", label: "Speakers" },
+  // { href: "/schedule", label: "Schedule" },
+  // { href: "/updates", label: "Updates" },
+  // { href: "/#sponsors", label: "Sponsors" },
+  // { href: "/venue", label: "Venue" }
 ].map(link => ({
   ...link,
   key: `nav-link-${link.href}-${link.label}`
@@ -23,12 +25,11 @@ const links = [
 
 const Nav = () => {
   let [isScrolling, setScroll] = useState(false);
-  let [showNavGetTicket, setNavGetTicket] = useState(false);
+  let [mobileMenuIsOpen, toggleMobileMenu] = useState(false);
 
   useEffect(() => {
     window.onscroll = () => {
       setScroll(window.document.documentElement.scrollTop > 30);
-      setNavGetTicket(window.document.documentElement.scrollTop > 500);
     };
   }, []);
 
@@ -36,14 +37,18 @@ const Nav = () => {
   return (
     <nav className={isScrolling ? "scrolling" : ""}>
       <a className="logo" href="https://www.tikalk.com" target="_blank">
-        <img src="../img/tikal_logo.png" />
+        <img src="../img/logo_white.svg" />
       </a>
 
-      <ul>
-        {links.map(({ key, href, label, target = null }) => {
+      <svg className="menu-trigger-mobile" viewBox="0 0 32 32" onClick={() => toggleMobileMenu(state => !state)}>
+        <use xlinkHref="../img/sprites.svg#icon-menu"></use>
+      </svg>
+
+      <ul className={mobileMenuIsOpen ? "open" : ""}>
+        {links.map(({key, href, label, target = null, showInMobile = true}) => {
           const isActive = router.pathname === href;
           return (
-            <li key={key}>
+            <li key={key} className={!showInMobile ? "hide-in-mobile" : ""}>
               <Link href={href} prefetch={false}>
                 <a className={isActive ? "active" : ""} target={target}>
                   {label}
@@ -54,12 +59,9 @@ const Nav = () => {
         })}
       </ul>
 
-      <div className={`buy-ticket-btn ${showNavGetTicket ? "active" : ""}`}>
-        <a
-          href="https://www.eventbrite.com/e/fullstack-tech-radar-day-tickets-55203831145#tickets"
-          target="_blank"
-        >
-          BUY TICKET
+      <div className="buy-ticket-btn">
+        <a href="https://www.eventbrite.com/e/fullstack-tech-radar-day-tickets-55203831145#tickets" target="_blank">
+          GET TICKETS
         </a>
       </div>
 
@@ -70,10 +72,10 @@ const Nav = () => {
         }
         nav {
           text-align: center;
-          background-color: #2c2929;
+          background-color: #363434;
           position: fixed;
           width: 100%;
-          height: 87px;
+          height: 96px;
           display: flex;
           align-items: center;
           justify-content: space-around;
@@ -85,13 +87,13 @@ const Nav = () => {
         }
         .logo {
           position: absolute;
-          left: 2%;
-          top: 20px;
+          left: 10%;
         }
         ul {
           display: flex;
-          justify-content: left;
           margin: 0;
+          justify-content: flex-end;
+          width: 50%;
         }
         nav > ul {
           padding: 4px 16px;
@@ -101,7 +103,7 @@ const Nav = () => {
           padding: 6px 8px;
         }
         li a {
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 300;
           -webkit-transition: all 0.3s;
           transition: all 0.3s;
@@ -117,31 +119,88 @@ const Nav = () => {
         }
         nav .buy-ticket-btn {
           position: absolute;
-          right: 20px;
-          top: -50px;
-          border-radius: 5px;
-          filter: brightness(100%);
-          cursor: pointer;
+          right: 7%;
+          display: block;
+          background: linear-gradient(90deg, #e87221 0%, #e9a35c 98%);
+          border-radius: 34px;
+          color: white;
+          font-size: 15px;
+          line-height: 15px;
+          text-decoration: none;
+          text-transform: uppercase;
           width: fit-content;
           height: fit-content;
-          font-size: 16px;
-          padding: 10px 45px 10px 35px;
-          margin-top: 8px;
-          margin-bottom: 17px;
-          background-color: #ff6f00;
-          transition: 1s;
-          opacity: 0;
-        }
-        nav .buy-ticket-btn.active {
-          top: 13px;
-          opacity: 1;
+          padding: 10px 17px;
+          user-select: none;
+          cursor: pointer;
+          font-style: normal;
+          font-weight: bold;
+          transition: 1s all;
         }
         nav .buy-ticket-btn a {
           user-select: none;
           font-weight: 700;
           text-decoration: none;
-          font-size: 16px;
+          font-size: 15px;
           color: #ffffff;
+        }
+        .menu-trigger-mobile {
+          display: none;
+        }
+
+        @media (${Devices.mobile}) {
+          nav {
+            height: 57px;
+          }
+          nav ul {
+            transform: translateX(-100%);
+            width: 256px;
+            background: #363333;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 57px;
+            left: 0;
+            align-items: flex-startl;
+            padding-top: 80px;
+            transition: all 0.5s ease;
+            height: auto;
+            padding: 0 10px;
+            text-align: right;
+          }
+          nav ul.open {
+            transform: translateX(0);
+          }
+          .hide-in-mobile {
+            display: none;
+          }
+          nav li a {
+            color: #ffffff;
+            font-size: 16px;
+            padding: 7px 0;
+          }
+          .logo {
+            top: 13px;
+            z-index: 999999;
+            left: initial;
+            right: 0%;
+          }
+          .logo img {
+            transform: scale(0.6);
+          }
+          .menu-trigger-mobile {
+            width: 20px;
+            height: 20px;
+            fill: #ffffff;
+            display: block;
+            position: absolute;
+            top: 18px;
+            left: 23px;
+            cursor: pointer;
+          }
+          nav .buy-ticket-btn {
+            display: none;
+          }
         }
       `}</style>
     </nav>

@@ -9,33 +9,35 @@ const SectionThree = () => {
         <Fade left distance="50px">
           <div className="left">
             <h3>
-              DISCOVER <br />
-              TIKAL’S
+              DISCOVER THE <br />
+              TECH RADAR
               <br />
-              <span className="orange">TECH RADAR</span>
             </h3>
 
-            <h2>
-              START, KEEP <span>OR</span> STOP?
-            </h2>
+            <h2 className="orange">Try, Start, Keep or Stop?</h2>
 
             <p>
-              The Radar is a new initiative from Tikal to summarize our usage
-              and opinion about certain technology topics in our client
-              solutions. <br />
-              Are you in or out of the game?
-              <br />
-              <br />
-              Discover Tikal’s Tech Radar by attending high profile talks and
-              expert workshops on all aspects of fullstack.
+              Tikal’s Tech Radar summarizes the usage and opinions gathered from
+              our experts’ research about current trends and technologies. The
+              radar presents four rings: Try, Start, Keep and Stop and 4
+              domains: Backend, Frontend, DevOps and Mobile. During Tech Radar
+              Day 2020 We will focus on the Try and Start rings, in order to
+              provide you with information and hands-on experience in
+              cutting-edge technologies.
             </p>
+            <a
+              className="get-tickets-button hide-in-mobile"
+              href="tikal/radar/index.html"
+            >
+              EXPLORE THE RADAR
+            </a>
           </div>
         </Fade>
 
         <Fade right distance="50px">
           <div className="right">
             <a href="/radar">
-              <img src="../img/radar-sample.jpg" />
+              <img src="../img/radar-sample.svg" />
             </a>
           </div>
         </Fade>

@@ -10,21 +10,21 @@ import SectionFive from "./partials/sectionFive";
 import SectionSix from "./partials/sectionSix";
 import SectionSeven from "./partials/sectionSeven";
 import SectionEight from "./partials/sectionEight";
-import SectionNine from "./partials/sectionNine";
+import {Venue} from "../venue";
 
 const Home = props => (
   <MainLayout>
     <Styles>
       <div className="container">
         <SectionOne />
-        <SectionTwo />
         <SectionThree />
+        <SectionTwo />
         <SectionFour />
-        <SectionFive speakers={props.speakers} />
-        <SectionSix updates={props.updates} />
+        <SectionFive />
+        <SectionSix speakers={props.speakers} />
         <SectionSeven />
         <SectionEight sponsors={props.sponsors} />
-        <SectionNine />
+        <Venue />
       </div>
     </Styles>
   </MainLayout>
@@ -36,18 +36,12 @@ Home.getInitialProps = async () => {
   let keys = ctx.keys();
   const speakers = keys.map(ctx);
 
-  // get all updates
-  ctx = require.context("../../content/updates", false, /\.md$/);
-  keys = ctx.keys();
-  // include the file name as url for routing
-  const updates = keys.map(ctx).map((u, i) => ({ ...u, url: keys[i] }));
-
   // get all sponsors
   ctx = require.context("../../content/sponsors", false, /\.md$/);
   keys = ctx.keys();
   const sponsors = keys.map(ctx);
 
-  return { speakers, updates, sponsors };
+  return {speakers, sponsors};
 };
 
 export default Home;
@@ -55,5 +49,9 @@ export default Home;
 const Styles = styled.div`
   .container {
     background: #2c2929;
+  }
+  .venue {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 `;

@@ -1,22 +1,38 @@
 import * as React from "react";
-import { NextPage } from "next";
+import {NextPage} from "next";
 import MainLayout from "../layouts/main";
 import styled from "styled-components";
-import marked from "marked";
 import Person from "../components/Person";
+import ReactMarkDown from "react-markdown";
+import {Devices} from "../layouts/styled-components";
 
-interface IRadarProps {}
+interface IRadarProps {
+  trends: Array<any>;
+  contributors: Array<any>;
+}
+declare global {
+  interface Window {
+    initThoughtRadars: any;
+  }
+}
 
 const Radar: NextPage<IRadarProps> = props => {
-  console.log(props);
-  const { trends = [], contributors = [] } = props;
+  const {trends = [], contributors = []} = props;
   const articlesRefs = [];
   const scrollToRef = ref =>
     window.scrollTo({
-      top: ref.current.offsetTop - 70,
+      top: ref.current.offsetTop - 90,
       left: 0,
       behavior: "smooth"
     });
+
+  React.useEffect(() => {
+    if (process.browser) {
+      if (window && window.initThoughtRadars) {
+        window.initThoughtRadars();
+      }
+    }
+  }, []);
 
   return (
     <MainLayout>
@@ -24,19 +40,21 @@ const Radar: NextPage<IRadarProps> = props => {
         <div className="radar">
           <div>TECH RADAR</div>
 
+          <div className="thought-radar" data-sheet="/data/radar.csv">
+            <a href="javascript:;" id="showRadar">
+              Show Full Radar
+            </a>
+          </div>
+
           <div className="trends">
             <header>
               <h3>Trends</h3>
               <ul>
                 {trends.map((trend, index) => {
-                  const { title, image } = trend.attributes;
+                  const {title, image} = trend.attributes;
                   articlesRefs.push(React.useRef(null));
-                  console.log(articlesRefs);
                   return (
-                    <li
-                      key={title}
-                      onClick={() => scrollToRef(articlesRefs[index])}
-                    >
+                    <li key={title} onClick={() => scrollToRef(articlesRefs[index])}>
                       <a>
                         <span>
                           <img src={image} />
@@ -51,33 +69,33 @@ const Radar: NextPage<IRadarProps> = props => {
                 })}
               </ul>
             </header>
-
-            <section className="posts">
-              {trends.map((trend, index) => {
-                const { title, image, content, tags } = trend.attributes;
-                return (
-                  <article ref={articlesRefs[index]}>
-                    <h3>{title}</h3>
-                    <hr />
-                    <img src={image} />
-                    <p dangerouslySetInnerHTML={{ __html: marked(content) }} />
-                    <ul>
-                      {tags.map(tag => (
-                        <li key={`${title}_${tag}`}>{tag}</li>
-                      ))}
-                    </ul>
-                  </article>
-                );
-              })}
-            </section>
           </div>
+
+          <section className="posts">
+            {trends.map((trend, index) => {
+              const {title, image, content, tags} = trend.attributes;
+              return (
+                <article ref={articlesRefs[index]} key={title}>
+                  <h3>{title}</h3>
+                  <hr />
+                  <img src={image} />
+                  <ReactMarkDown source={content} />
+                  <ul>
+                    {tags.map(tag => (
+                      <li key={`${title}_${tag}`}>{tag}</li>
+                    ))}
+                  </ul>
+                </article>
+              );
+            })}
+          </section>
 
           <section className="contributors">
             <h3>Contributors</h3>
 
             <ul>
               {contributors.map(c => (
-                <Person {...c.attributes} />
+                <Person {...c.attributes} key={c.attributes.last_name} />
               ))}
             </ul>
           </section>
@@ -96,7 +114,7 @@ Radar.getInitialProps = () => {
   keys = ctx.keys();
   const contributors = keys.map(ctx);
 
-  return { trends, contributors };
+  return {trends, contributors};
 };
 
 export default Radar;
@@ -108,7 +126,7 @@ const Styles = styled.div`
   .trends {
     margin: 50px auto;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
-    width: 80%;
+    width: 970px;
     padding: 15px;
   }
   h3 {
@@ -119,15 +137,46 @@ const Styles = styled.div`
     font-size: 26px;
     line-height: 0.9;
   }
+  .thought-radar {
+    margin-top: 30px;
+    position: relative;
+  }
+  #showRadar {
+    display: none;
+    color: #fe885f !important;
+    text-align: right;
+    transition: 1s;
+    font-size: 14px;
+    position: absolute;
+    right: 329px;
+    top: 25px;
+    z-index: 22;
+    text-decoration: none;
+  }
+  #showRadar.home-link-show {
+    display: block;
+  }
+  .powered-by {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 10px;
+  }
+  iframe {
+    width: 100%;
+    min-height: 600px;
+    border: none;
+  }
   .trends ul {
     display: flex;
     justify-content: flex-start;
     padding: 0;
+    margin: 50px 0;
   }
   .trends li {
     list-style-type: none;
     width: 150px;
-    margin: 0 10px;
+    margin: 0 20px;
   }
   .trends header li:hover {
     box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.5);
@@ -165,6 +214,10 @@ const Styles = styled.div`
     border: 0;
     border-top: 1px solid #eee;
   }
+  .posts {
+    width: 900px;
+    margin: 0 auto;
+  }
   article {
     margin-bottom: 40px;
     background-color: #ffffff;
@@ -193,7 +246,7 @@ const Styles = styled.div`
     border-top: solid 1px #e8e7e7;
     display: flex;
   }
-  .trends article ul li {
+  .posts article ul li {
     margin-right: 5px;
     margin-bottom: 1px;
     padding: 0 15px;
@@ -214,5 +267,46 @@ const Styles = styled.div`
     display: flex;
     width: 80%;
     margin: 0 auto;
+  }
+
+  @media (${Devices.mobile}) {
+    .trends {
+      width: 100%;
+      padding: 15px 0;
+    }
+    ul {
+      flex-direction: column;
+    }
+    .trends li {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+    li a span {
+      height: 120px;
+      width: 100%;
+      justify-content: center;
+    }
+    li a span img {
+      max-width: 100%;
+      height: 100%;
+    }
+    li a div {
+      width: 100%;
+    }
+    .posts {
+      width: calc(100% - 40px);
+      margin: 0 auto;
+    }
+    article img {
+      max-width: 100%;
+    }
+    article ul {
+      flex-direction: row;
+    }
+    .contributors ul {
+      flex-direction: column;
+      padding: 0px;
+    }
   }
 `;

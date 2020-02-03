@@ -1,80 +1,146 @@
 import styled from "styled-components";
+import {Devices} from "../../../layouts/styled-components";
 
 const Styles = styled.div`
-
   .section-seven {
-    background: #f9f9f9;
-    padding-top: 50px;
-    padding-bottom: 60px;
+    height: 470px;
+    color: white;
+    background: linear-gradient(180deg, #e97b26 3.19%, #f5c653 97.98%);
+    text-align: center;
   }
   h2 {
-    font-size: 33px;
-    line-height: 87px;
     font-weight: 900;
-    margin-top:50px;
-    text-align:center;
+    font-style: normal;
+    font-size: 50px;
+    padding: 50px 0;
+    margin: 0;
   }
   .tickets-wrapper {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+    align-items: self-start;
+    justify-content: space-around;
     padding: 0px 200px;
   }
-  .ticket {
-    border: solid 1px #c3c3c3;
-    width: 348px;
+
+  .tickets-wrapper .ticket {
+    width: 295px;
+    position: relative;
+    min-height: 195px;
+    color: black;
+    background: #f6f6f6;
+    text-transform: capitalize;
   }
-  .ticket-title {
-    font-size: 20px;
-    line-height: 27px;
-    background-color: #e9e9e9;
-    padding: 34px 52px;
-    font-weight: 700;
-    text-align: center;
+  .ticket div {
+    margin-top: 20px;
   }
-  .ticket-price-section {
-    font-size: 16px;
-    line-height: 23px;
-    background-color: #f7f7f7;
-    padding: 23px 0;
-    border-bottom: solid 0.5px #ebebeb;
-    text-align: center;
+  .tickets-section .ticket .get-tickets-button {
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
   }
-  .orange {
-    color: #ff6f00;
+  .get-tickets-button {
+    position: relative;
+    display: block;
+    background: linear-gradient(90deg, #e87221 0%, #e9a35c 98%);
+    border-radius: 34px;
+    color: white;
+    font-size: 15px;
+    line-height: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 17px;
+    user-select: none;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: bold;
+    transition: 1s all;
+  }
+  .ticket.disabled,
+  .ticket.disabled .desc .desc-second-line {
+    color: #c4c4c4 !important;
+  }
+
+  .tickets-wrapper .ticket .buy-tickets-wrapper {
+    position: relative;
+    background-color: #231f20;
+    height: 61px;
+  }
+
+  .tickets-wrapper .ticket-title {
+    font-style: normal;
     font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
   }
-  .ticket-valid {
+
+  .ticket-price-section {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .tickets-wrapper .old-price {
+    text-decoration: line-through;
+  }
+
+  .tickets-wrapper .ticket-valid {
     font-size: 14px;
   }
-  .ticket-description {
+
+  .tickets-wrapper .ticket-description {
     font-size: 14px;
     line-height: 21px;
   }
-  .desc {
-    border-bottom: solid 0.5px #ebebeb;
-    padding: 16px 20px;
-    height: unset;
-    text-align;
+
+  .tickets-wrapper .desc {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
   }
-  .desc .m-bold {
-    font-weight: 700;
+
+  .tickets-wrapper .desc .desc-second-line {
+    color: #f47720;
   }
-  .disabled-button {
-    position: relative;
-    display: block;
-    text-decoration: none;
-    height: fit-content;
-    font-size: 16px;
-    padding: 8px 45px 8px 35px;
-    background-color: #696766;
-    user-select: none;
-    cursor: default;
+
+  .ticket .get-tickets-button {
     color: white;
-    pointer-events: none;
-    text-align: center;
-  } 
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .tickets-wrapper .desc:last-child {
+    border-bottom: none;
+  }
+
+  @media (${Devices.mobile}) {
+    .section-seven {
+      height: auto;
+      padding-bottom: 40px;
+    }
+    h2 {
+      font-size: 30px;
+      line-height: 1;
+    }
+    .tickets-wrapper {
+      flex-direction: column;
+      padding: 0;
+    }
+    .tickets-wrapper .ticket {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 export default Styles;

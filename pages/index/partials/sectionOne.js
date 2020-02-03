@@ -1,44 +1,29 @@
 import React from "react";
 import Styles from "../css/section-one";
+import RadarLogo from "../../../components/RadarLogo";
 
 const SectionOne = () => {
   return (
     <Styles>
       <div className="section-one">
-        <div>
-          <div className="radar-wrapper">
-            <div className="radar-outer">
-              <img className="text" />
-              <div className="radar">
-                <div className="cross-section"></div>
-                <div className="spinner-outer">
-                  <div className="spinner"></div>
-                </div>
-                <img className="octopus" />
-              </div>
-            </div>
-          </div>
+        <div className="section-one-container">
+          <RadarLogo />
 
           <div className="text">
             <h1>
-              FULL STACK TECH
+              TECH RADAR
               <br />
-              RADAR DAY 2020
+              DAY 2020
             </h1>
-            <h2>FULL DAY OF FULL STACK.</h2>
+            <h2>Full Day of Full Stack</h2>
 
             <h3>
-              <span className="orange">Full Stack, </span>
-              <span>full house </span>
-              <span className="orange">thank you for being there. </span>
-              <span>See you next time!</span>
-              <div>
-                <a
-                  href="https://www.youtube.com/channel/UCV7lV9Lq2sc7t0QEKS4xH7A/playlists?view=50&amp;sort=dd&amp;shelf_id=2"
-                  target="_blank"
-                >
-                  Watch the videos on our channel
-                </a>
+              <div>May 6th, 2020</div>
+              <div>David Intercontinental, Tel-Aviv</div>
+              <div className="discount-notification">
+                Early bird tickets are on sale now.
+                <br />
+                Save up to <span className="orange">40%</span>. Valid Until March 1st.
               </div>
             </h3>
 
@@ -47,7 +32,7 @@ const SectionOne = () => {
                 href="https://www.eventbrite.com/e/fullstack-tech-radar-day-tickets-55203831145#tickets"
                 target="_blank"
               >
-                Buy Ticket
+                get tickets
               </a>
             </div>
           </div>

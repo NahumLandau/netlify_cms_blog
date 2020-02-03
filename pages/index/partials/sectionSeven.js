@@ -1,112 +1,68 @@
 import React from "react";
 import Styles from "../css/section-seven";
+import Fade from "react-reveal/Fade";
 
 const SectionSeven = () => {
+  const passes = [
+    {
+      type: "early bird",
+      isActive: true,
+      price: 400,
+      ticketsLeft: "Only 50 Tickets!",
+      endDate: "Available until March 1st"
+    },
+    {
+      type: "regular",
+      isActive: false,
+      price: 600,
+      ticketsLeft: "available",
+      endDate: "until May 1st"
+    },
+    {
+      type: "regular",
+      isActive: false,
+      price: 800,
+      ticketsLeft: "available",
+      endDate: "until April 25th"
+    }
+  ];
   return (
     <Styles>
       <div className="section-seven">
         <h2>CHOOSE YOUR PASS</h2>
 
         <div className="tickets-wrapper">
-          <div
-            className="ticket animated fadeInRight visible"
-            data-animation="fadeInRight"
-            data-delay="500"
-          >
-            <div className="ticket-title m-bold"> Early Bird</div>
-            <div className="ticket-price-section m-regular">
-              <div>
-                Early Bird<span className="orange m-semi-bold"> 300 NIS</span>
-              </div>
-              <div className="ticket-valid m-regular">
-                Valid until 31 March 2019
-              </div>
-            </div>
-            <div className="ticket-description">
-              <div className="desc">
-                Day pass to main hall, tracks and exhibition hall
-              </div>
-              <div className="desc">
-                For developers, tech leads, R&amp;D managers, CTOs
-              </div>
-              <div className="desc"> Breakfast &amp; lunch included</div>
-              <div className="desc">
-                Includes access to one 3-hours workshop of your choice
-              </div>
-              <div className="desc">
-                <span className="m-bold">
-                  For Workshop Bring your own Laptop
-                </span>
-              </div>
-            </div>
-            <a className="disabled-button m-semi-bold"> Sold Out </a>
-          </div>
-          <div
-            className="ticket animated fadeInLeft visible"
-            data-animation="fadeInLeft"
-            data-delay="500"
-          >
-            <div className="ticket-title m-bold"> Regular</div>
-            <div className="ticket-price-section m-regular">
-              <div>
-                Regular<span className="orange m-semi-bold"> 500 NIS</span>
-              </div>
-              <div className="ticket-valid m-regular">
-                Valid until 30 April 2019
-              </div>
-            </div>
-            <div className="ticket-description">
-              <div className="desc">
-                Day pass to main hall, tracks and exhibition hall
-              </div>
-              <div className="desc">
-                For developers, tech leads, R&amp;D managers, CTOs
-              </div>
-              <div className="desc"> Breakfast &amp; lunch included</div>
-              <div className="desc">
-                Includes access to one 3-hours workshop of your choice
-              </div>
-              <div className="desc">
-                <span className="m-bold">
-                  For Workshop Bring your own Laptop
-                </span>
-              </div>
-            </div>
-            <a className="disabled-button m-semi-bold"> Sold Out </a>
-          </div>
-          <div
-            className="ticket animated fadeInRight visible"
-            data-animation="fadeInRight"
-            data-delay="500"
-          >
-            <div className="ticket-title m-bold"> Late Bird</div>
-            <div className="ticket-price-section m-regular">
-              <div>
-                Late Bird<span className="orange m-semi-bold"> 700 NIS</span>
-              </div>
-              <div className="ticket-valid m-regular">
-                Valid until 14 May 2019
-              </div>
-            </div>
-            <div className="ticket-description">
-              <div className="desc">
-                Day pass to main hall, tracks and exhibition hall
-              </div>
-              <div className="desc">
-                For developers, tech leads, R&amp;D managers, CTOs
-              </div>
-              <div className="desc"> Breakfast &amp; lunch included</div>
-              <div className="desc">
-                Includes access to one 3-hours workshop of your choice
-              </div>
-              <div className="desc">
-                <span className="m-bold">
-                  For Workshop Bring your own Laptop
-                </span>
-              </div>
-            </div>
-            <a className="disabled-button m-semi-bold"> Sold Out </a>
-          </div>
+          {passes.map(pass => {
+            const { type, isActive, price, ticketsLeft, endDate } = pass;
+            return (
+              <Fade right distance="20px" key={price}>
+                <div className={`ticket ${!isActive ? "disabled" : ""}`}>
+                  <div className="ticket-title">
+                    {type}
+                    <br />
+                    {price}
+                  </div>
+                  <div className="ticket-description">
+                    <div className="desc">
+                      <div>{ticketsLeft}</div>
+                      <div className="desc-second-line">{endDate}</div>
+                    </div>
+                  </div>
+                  {isActive && (
+                    <div className="buy-tickets-wrapper">
+                      <a
+                        className="get-tickets-button"
+                        href="https://www.eventbrite.com/e/fullstack-tech-radar-day-tickets-55203831145#tickets"
+                        target="_blank"
+                      >
+                        Get Tickets
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </Fade>
+            );
+          })}
         </div>
       </div>
     </Styles>

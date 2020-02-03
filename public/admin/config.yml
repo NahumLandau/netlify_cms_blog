@@ -93,4 +93,23 @@ collections:
           name: "image",
           widget: "image",
           allow_multiple: false,
-        }
+      }
+  - name: "schedule"
+    label: "Schedule"
+    folder: "content/schedule"
+    create: true
+    slug: "{{time}}"
+    identifier_field: "time"
+    fields: 
+      - {label: "Time", name: "time", widget: "string" }
+      - label: "Speakers"
+        name: "speakers"
+        widget: "object"
+        fields: 
+        - {label: "Backend/ML", name: "backend", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false} 
+        - {label: "DevOps", name: "devops", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false} 
+        - {label: "Frontend", name: "frontend", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false} 
+        - {label: "Mobile&Things", name: "mobile", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false}
+      - {label: "Mark as break", name: "is_break", widget: "boolean", required: false}
+      
+     
