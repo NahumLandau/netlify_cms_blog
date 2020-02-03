@@ -9,7 +9,7 @@ const SectionEight = props => {
 
   return (
     <Styles>
-      <div className="section-eight">
+      <div className="section-eight" id="sponsors">
         <h2>ORGANIZERS</h2>
 
         <h3>MAIN ORGANIZER</h3>

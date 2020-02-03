@@ -14,7 +14,7 @@ const links = [
   { href: "/speakers", label: "Speakers" },
   { href: "/schedule", label: "Schedule" },
   { href: "/updates", label: "Updates" },
-  { href: "/sponsor", label: "Sponsors" },
+  { href: "/#sponsors", label: "Sponsors" },
   { href: "/venue", label: "Venue" }
 ].map(link => ({
   ...link,
@@ -110,7 +110,7 @@ const Nav = () => {
           text-decoration: none;
         }
         li a:hover,
-        .active {
+        li a.active {
           text-decoration: none;
           color: #ff6f00;
           font-weight: 700;

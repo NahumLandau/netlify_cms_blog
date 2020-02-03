@@ -6,10 +6,7 @@ const Footer = () => {
     <Styles>
       <section className="footer">
         <h2>GET IN TOUCH</h2>
-        <form
-          className="uppercase m-regular top-30"
-          onSubmit="onDetailsSubmit(event)"
-        >
+        <form className="uppercase m-regular top-30" onSubmit={() => {}}>
           <div className="form-row personal-details m-regular">
             <input
               type="text"

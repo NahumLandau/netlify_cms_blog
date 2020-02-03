@@ -1,8 +1,9 @@
 import React from "react";
+import Error from "next/error";
 
 const Post = props => {
   if (!props.post) {
-    return <div>Page not Found</div>;
+    return <Error statusCode="404" />;
   }
 
   const {
