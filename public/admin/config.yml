@@ -49,3 +49,32 @@ collections:
           widget: "select",
           options: ["sponsor", "exhibitor", "media"],
         }
+  - name: "radar_trends"
+    label: "Radar/trends"
+    folder: "content/radar/trends"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Content", name: "content", widget: "markdown" }
+      - {
+          label: "Image",
+          name: "image",
+          widget: "image",
+          allow_multiple: false,
+        }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "select",
+          options:
+            [
+              "Frontend",
+              "Backend",
+              "Devops",
+              "Mobile",
+              "Techniques",
+              "Platforms",
+            ],
+          multiple: true,
+        }
