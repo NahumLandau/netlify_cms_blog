@@ -1,16 +1,17 @@
 import * as React from "react";
-import { NextPage } from "next";
+import {NextPage} from "next";
 import MainLayout from "../../layouts/main";
 import Fade from "react-reveal/Fade";
 import styled from "styled-components";
-import { urlFromFileName } from "../../helpers";
-import { Devices } from "../../layouts/styled-components";
+import {urlFromFileName} from "../../helpers";
+import {Devices} from "../../layouts/styled-components";
 
-interface IUpdatesProps {}
+interface IUpdatesProps {
+  updates: Array<any>;
+}
 
 const Updates: NextPage<IUpdatesProps> = props => {
-  console.log(props);
-  const { updates = [] } = props;
+  const {updates = []} = props;
   return (
     <MainLayout>
       <Styles>
@@ -24,7 +25,7 @@ const Updates: NextPage<IUpdatesProps> = props => {
           <ul>
             {updates.map(item => {
               const {
-                attributes: { title, teaser, date_published },
+                attributes: {title, teaser, date_published},
                 url
               } = item;
               const dateFormat = {
@@ -32,10 +33,7 @@ const Updates: NextPage<IUpdatesProps> = props => {
                 month: "long",
                 day: "numeric"
               };
-              const date = new Date(date_published).toLocaleDateString(
-                "en-US",
-                dateFormat
-              );
+              const date = new Date(date_published).toLocaleDateString("en-US", dateFormat);
               const href = `updates/${urlFromFileName(url)}`;
 
               return (
@@ -63,11 +61,9 @@ const Updates: NextPage<IUpdatesProps> = props => {
 Updates.getInitialProps = async () => {
   const ctx = require.context("../../content/updates", false, /\.md$/);
   const keys = ctx.keys();
-  const updates = keys
-    .map(ctx)
-    .map((u, i) => ({ ...(u as object), url: keys[i] }));
+  const updates = keys.map(ctx).map((u, i) => ({...(u as object), url: keys[i]}));
 
-  return { updates };
+  return {updates};
 };
 
 export default Updates;
