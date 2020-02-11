@@ -28,16 +28,6 @@ collections:
           widget: "select",
           options: ["he", "en"],
         }
-  - name: "updates"
-    label: "Updates"
-    folder: "content/updates"
-    create: true
-    slug: "{{title}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Teaser", name: "teaser", widget: "string" }
-      - { label: "Content", name: "content", widget: "markdown" }
-      - { label: "Date", name: "date_published", widget: "date" }
 
   - name: "sponsors"
     label: "Sponsors"
@@ -56,7 +46,7 @@ collections:
           options: ["sponsor", "exhibitor", "media"],
         }
   - name: "radar_trends"
-    label: "Radar/trends"
+    label: "Radar Trends"
     folder: "content/radar/trends"
     create: true
     slug: "{{title}}"
@@ -84,22 +74,6 @@ collections:
             ],
           multiple: true,
         }
-  - name: "radar_contributors"
-    label: "radar/contributors"
-    folder: "content/radar/contributors"
-    create: true
-    slug: "{{first_name}}-{{last_name}}"
-    identifier_field: last_name
-    fields:
-      - { label: "First name", name: "first_name", widget: "string" }
-      - { label: "Last name", name: "last_name", widget: "string" }
-      - { label: "Position", name: "position", widget: "string" }
-      - {
-          label: "Image",
-          name: "image",
-          widget: "image",
-          allow_multiple: false,
-      }
   - name: "schedule"
     label: "Schedule"
     folder: "content/schedule"
@@ -117,5 +91,19 @@ collections:
         - {label: "Frontend", name: "frontend", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false} 
         - {label: "Mobile&Things", name: "mobile", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false}
       - {label: "Mark as break", name: "is_break", widget: "boolean", required: false}
+  - name: "tickets"
+    label: "Tickets"
+    folder: "content/tickets"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - {label: "Title", name: "title", widget: "string" }
+      - {label: "Tickets left", name: "tickets_left", widget: "string" }
+      - {label: "End date", name: "end_date", widget: "string" }
+      - {label: "Is available", name: "is_active", widget: "boolean", required: false}
+
+
+
+    
       
      

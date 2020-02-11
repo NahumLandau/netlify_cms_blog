@@ -2,7 +2,6 @@ import React from "react";
 import {Map, GoogleApiWrapper, Marker} from "google-maps-react";
 
 const GoogleMap = props => {
-  console.log(props);
   return (
     <Map
       google={props.google}

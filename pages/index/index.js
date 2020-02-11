@@ -11,9 +11,11 @@ import SectionSix from "./partials/sectionSix";
 import SectionSeven from "./partials/sectionSeven";
 import SectionEight from "./partials/sectionEight";
 import {Venue} from "../venue";
+import {NextSeo} from "next-seo";
 
 const Home = props => (
   <MainLayout>
+    <NextSeo {...SEO} />
     <Styles>
       <div className="container">
         <SectionOne />
@@ -22,7 +24,7 @@ const Home = props => (
         <SectionFour />
         <SectionFive />
         <SectionSix speakers={props.speakers} />
-        <SectionSeven />
+        <SectionSeven tickets={props.tickets} />
         <SectionEight sponsors={props.sponsors} />
         <Venue />
       </div>
@@ -41,7 +43,12 @@ Home.getInitialProps = async () => {
   keys = ctx.keys();
   const sponsors = keys.map(ctx);
 
-  return {speakers, sponsors};
+  // get all tickets
+  ctx = require.context("../../content/tickets", false, /\.md$/);
+  keys = ctx.keys();
+  const tickets = keys.map(ctx);
+
+  return {speakers, sponsors, tickets};
 };
 
 export default Home;
@@ -55,3 +62,14 @@ const Styles = styled.div`
     margin-bottom: 0;
   }
 `;
+
+const SEO = {
+  title: "Tech Radar Day 2020 | Full Day of Full Stack",
+  description:
+    "Welcome to Israel's largest Full Stack conference. Lectures, lightening talks workshops and lots of treats! Get your tickets now! Have an interesting talk you want to share with the community? Send us your CFP. Want to become a sponsor? We're open to collaborations,",
+  openGraph: {
+    title: "Tech Radar Day 2020 | Full Day of Full Stack",
+    description:
+      "Welcome to Israel's largest Full Stack conference. Lectures, lightening talks workshops and lots of treats! Get your tickets now! Have an interesting talk you want to share with the community? Send us your CFP. Want to become a sponsor? We're open to collaborations,"
+  }
+};

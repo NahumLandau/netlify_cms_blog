@@ -118,7 +118,16 @@ const Styles = styled.li`
     overflow: hidden;
     text-align: left;
   }
-
+  @media (${Devices.tablet}) {
+    list-style-type: none;
+    width: 25%;
+    margin-left: 6px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 20px;
+    min-width: 280px;
+  }
   @media (${Devices.mobile}) {
     width: 100%;
     margin: 10px 0;

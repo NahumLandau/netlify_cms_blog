@@ -1,6 +1,7 @@
 import React from "react";
 import Styles from "../css/section-three";
 import Fade from "react-reveal/Fade";
+import {logEvent} from "../../../helpers/analytics";
 
 const SectionThree = () => {
   return (
@@ -22,7 +23,13 @@ const SectionThree = () => {
               Frontend, DevOps and Mobile. During Tech Radar Day 2020 We will focus on the Try and Start rings, in order
               to provide you with information and hands-on experience in cutting-edge technologies.
             </p>
-            <a className="get-tickets-button hide-in-mobile" href="/radar">
+            <a
+              className="get-tickets-button hide-in-mobile"
+              href="/radar"
+              onClick={() => {
+                logEvent("Radar link", "Clicked", "Home page");
+              }}
+            >
               EXPLORE THE RADAR
             </a>
           </div>

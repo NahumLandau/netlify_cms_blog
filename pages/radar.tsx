@@ -2,9 +2,9 @@ import * as React from "react";
 import {NextPage} from "next";
 import MainLayout from "../layouts/main";
 import styled from "styled-components";
-import Person from "../components/Person";
 import ReactMarkDown from "react-markdown";
 import {Devices} from "../layouts/styled-components";
+import {NextSeo} from "next-seo";
 
 interface IRadarProps {
   trends: Array<any>;
@@ -36,6 +36,7 @@ const Radar: NextPage<IRadarProps> = props => {
 
   return (
     <MainLayout>
+      <NextSeo {...SEO} />
       <Styles>
         <div className="radar">
           <div>TECH RADAR</div>
@@ -90,14 +91,36 @@ const Radar: NextPage<IRadarProps> = props => {
             })}
           </section>
 
-          <section className="contributors">
-            <h3>Contributors</h3>
+          <section className="about">
+            <h3>About The Radar</h3>
 
-            <ul>
-              {contributors.map(c => (
-                <Person {...c.attributes} key={c.attributes.last_name} />
-              ))}
-            </ul>
+            <article>
+              The Radar is a new initiative from Tikal to summarize our usage & opinion about certain technology topics
+              in our client solutions. Our Radar has 4 domains , Backend & ML , Frontend and Mobile & Things which are
+              mapped to our main core expertise. Our Radar has four rings, which are described from the middle:
+              <ul>
+                <li>
+                  <span>The Try ring is for interested topics that we think you should explore and keep eye on.</span>
+                </li>
+                <li>
+                  <span>
+                    The Start ring is for topics that we think are ready for use, but not as completely proven as those
+                    in the Keep ring.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    The Keep ring represents topics that we think you should keep using now in the appropriate context.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    The Stop ring is for topics that are getting attention in the industry, but we don't think you
+                    should continue using it.
+                  </span>
+                </li>
+              </ul>
+            </article>
           </section>
         </div>
       </Styles>
@@ -149,7 +172,7 @@ const Styles = styled.div`
     transition: 1s;
     font-size: 14px;
     position: absolute;
-    right: 329px;
+    right: 30px;
     top: 25px;
     z-index: 22;
     text-decoration: none;
@@ -261,16 +284,31 @@ const Styles = styled.div`
     line-height: 30px;
     width: unset;
   }
-  .contributors {
-    text-align: center;
+  .about {
+    text-align: left;
+    width: 900px;
+    max-width: 100%;
+    margin: 0 auto;
     margin-top: 60px;
   }
-  .contributors ul {
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
+  .about article {
+    text-align: left;
+    line-height: 1.5;
+    font-size: 16px;
     margin: 0 auto;
-    padding: 0;
+    padding-bottom: 20px;
+  }
+  .about article ul {
+    list-style: disc;
+    border-top: none;
+    display: initial;
+    list-style-position: inside;
+  }
+  .about article ul li {
+    padding-left: 15px;
+  }
+  .about article ul li span {
+    display: inline-flex;
   }
 
   @media (${Devices.tablet}) {
@@ -320,3 +358,15 @@ const Styles = styled.div`
     }
   }
 `;
+
+const title = "Tikal's Tech Radar | Stay Ahead of the Game";
+const description =
+  "Tikal’s Tech Radar summarizes the usage and opinions gathered from our experts’ research about current trends and technologies. The radar presents four rings: Try, Start, Keep and Stop and 4 domains: Backend, Frontend, DevOps and Mobile. Where are you on the radar? ";
+const SEO = {
+  title,
+  description,
+  openGraph: {
+    title,
+    description
+  }
+};

@@ -1,59 +1,37 @@
 import React from "react";
 import Styles from "../css/section-seven";
 import Fade from "react-reveal/Fade";
+import {logEvent} from "../../../helpers/analytics";
 
-const SectionSeven = () => {
-  const passes = [
-    {
-      type: "early bird",
-      isActive: true,
-      price: 400,
-      ticketsLeft: "Only 50 Tickets!",
-      endDate: "Available until March 1st"
-    },
-    {
-      type: "regular",
-      isActive: false,
-      price: 600,
-      ticketsLeft: "available",
-      endDate: "until May 1st"
-    },
-    {
-      type: "regular",
-      isActive: false,
-      price: 800,
-      ticketsLeft: "available",
-      endDate: "until April 25th"
-    }
-  ];
+const SectionSeven = props => {
+  const {tickets = []} = props;
   return (
     <Styles>
       <div className="section-seven">
         <h2>CHOOSE YOUR PASS</h2>
 
         <div className="tickets-wrapper">
-          {passes.map(pass => {
-            const {type, isActive, price, ticketsLeft, endDate} = pass;
+          {tickets.map(ticket => {
+            const {is_active, title, tickets_left, end_date} = ticket.attributes;
             return (
-              <Fade right distance="20px" key={price}>
-                <div className={`ticket ${!isActive ? "disabled" : ""}`}>
-                  <div className="ticket-title">
-                    {type}
-                    <br />
-                    {price}
-                  </div>
+              <Fade right distance="20px" key={title}>
+                <div className={`ticket ${!is_active ? "disabled" : ""}`}>
+                  <div className="ticket-title">{title}</div>
                   <div className="ticket-description">
                     <div className="desc">
-                      <div>{ticketsLeft}</div>
-                      <div className="desc-second-line">{endDate}</div>
+                      <div>{tickets_left}</div>
+                      <div className="desc-second-line">{end_date}</div>
                     </div>
                   </div>
-                  {isActive && (
+                  {is_active && (
                     <div className="buy-tickets-wrapper">
                       <a
                         className="get-tickets-button"
                         href="https://www.eventbrite.com/e/tech-radar-day-2020-tickets-86701092301"
                         target="_blank"
+                        onClick={() => {
+                          logEvent("Tickets", "Clicked", `Home page - ${title}`);
+                        }}
                       >
                         Get Tickets
                       </a>

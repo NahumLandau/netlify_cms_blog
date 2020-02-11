@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {Devices} from "../layouts/styled-components";
+import {logEvent} from "../helpers/analytics";
 
 const links = [
   {href: "/", label: "Home"},
@@ -15,9 +16,7 @@ const links = [
   {href: "https://2019.techradarday.com/", label: "2019", target: "_blank"}
   // { href: "/speakers", label: "Speakers" },
   // { href: "/schedule", label: "Schedule" },
-  // { href: "/updates", label: "Updates" },
   // { href: "/#sponsors", label: "Sponsors" },
-  // { href: "/venue", label: "Venue" }
 ].map(link => ({
   ...link,
   key: `nav-link-${link.href}-${link.label}`
@@ -33,7 +32,12 @@ const Nav = () => {
     };
   }, []);
 
+  const onNavClicked = navLabel => {
+    logEvent("Nav", "Clicked", navLabel);
+  };
+
   const router = useRouter();
+
   return (
     <nav className={isScrolling ? "scrolling" : ""}>
       <a className="logo" href="https://www.tikalk.com" target="_blank">
@@ -48,7 +52,7 @@ const Nav = () => {
         {links.map(({key, href, label, target = null, showInMobile = true}) => {
           const isActive = router.pathname === href;
           return (
-            <li key={key} className={!showInMobile ? "hide-in-mobile" : ""}>
+            <li key={key} className={!showInMobile ? "hide-in-mobile" : ""} onClick={() => onNavClicked(label)}>
               <Link href={href} prefetch={false}>
                 <a className={isActive ? "active" : ""} target={target}>
                   {label}
@@ -60,7 +64,13 @@ const Nav = () => {
       </ul>
 
       <div className="buy-ticket-btn">
-        <a href="https://www.eventbrite.com/e/tech-radar-day-2020-tickets-86701092301" target="_blank">
+        <a
+          href="https://www.eventbrite.com/e/tech-radar-day-2020-tickets-86701092301"
+          target="_blank"
+          onClick={() => {
+            logEvent("Tickets", "Clicked", "Navigation");
+          }}
+        >
           GET TICKETS
         </a>
       </div>

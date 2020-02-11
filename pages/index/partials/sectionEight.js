@@ -1,5 +1,6 @@
 import React from "react";
 import Styles from "../css/section-eight";
+import {logEvent} from "../../../helpers/analytics";
 
 const SectionEight = props => {
   const {sponsors = []} = props;
@@ -21,6 +22,9 @@ const SectionEight = props => {
           className="get-tickets-button m-semi-bold"
           href="https://docs.google.com/forms/d/e/1FAIpQLSdZP6u-sqo2-l-JfJNTtS0P5eAJ3yqD-CfwnhP32FcMIihS8w/viewform"
           target="_blank"
+          onClick={() => {
+            logEvent("Become a Sponsor", "Cliked", "Home page");
+          }}
         >
           BECOME A SPONSOR
         </a>

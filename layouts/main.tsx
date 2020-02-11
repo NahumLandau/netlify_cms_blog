@@ -1,11 +1,23 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Head from "next/head";
+import {useRouter} from "next/router";
 import Nav from "../components/nav";
 import Footer from "../components/Footer";
+import {initGA, logEvent} from "../helpers/analytics";
 
 interface IMainProps {}
 
 const Main: React.FunctionComponent<IMainProps> = ({children}) => {
+  useEffect(() => {
+    initGA();
+  }, []);
+
+  const location = useRouter();
+  useEffect(() => {
+    const isHome = location.pathname === "/";
+    logEvent("page view", isHome ? "home" : location.pathname.replace("/", ""));
+  }, [location]);
+
   return (
     <>
       <Head>

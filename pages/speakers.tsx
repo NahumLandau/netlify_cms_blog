@@ -1,17 +1,17 @@
 import * as React from "react";
 import MainLayout from "../layouts/main";
-import { NextPage } from "next";
+import {NextPage} from "next";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import Person from "../components/Person";
-import { Devices } from "../layouts/styled-components";
+import {Devices} from "../layouts/styled-components";
 
 interface ISpeakersProps {
   speakers: Array<any>;
 }
 
 const Speakers: NextPage<ISpeakersProps> = props => {
-  const { speakers } = props;
+  const {speakers} = props;
 
   return (
     <MainLayout>
@@ -24,12 +24,7 @@ const Speakers: NextPage<ISpeakersProps> = props => {
 
         <ul className="speakers">
           {speakers.map(speaker => {
-            return (
-              <Person
-                {...speaker.attributes}
-                key={speaker.attributes.last_name}
-              />
-            );
+            return <Person {...speaker.attributes} key={speaker.attributes.last_name} />;
           })}
         </ul>
       </Styles>
@@ -42,7 +37,7 @@ Speakers.getInitialProps = async () => {
   const keys = ctx.keys();
   const speakers = keys.map(ctx);
 
-  return { speakers };
+  return {speakers};
 };
 
 export default Speakers;
@@ -70,6 +65,7 @@ const Styles = styled.div`
     width: 80%;
     margin: 0 auto;
     padding: 50px 0;
+    flex-wrap: wrap;
   }
 
   @media (${Devices.mobile}) {

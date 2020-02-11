@@ -1,6 +1,7 @@
 import React from "react";
 import Styles from "../css/section-one";
 import RadarLogo from "../../../components/RadarLogo";
+import {logEvent} from "../../../helpers/analytics";
 
 const SectionOne = () => {
   return (
@@ -28,7 +29,13 @@ const SectionOne = () => {
             </h3>
 
             <div className="get-tickets-btn">
-              <a href="https://www.eventbrite.com/e/tech-radar-day-2020-tickets-86701092301" target="_blank">
+              <a
+                href="https://www.eventbrite.com/e/tech-radar-day-2020-tickets-86701092301"
+                target="_blank"
+                onClick={() => {
+                  logEvent("Tickets", "Clicked", "Home page - fold");
+                }}
+              >
                 get tickets
               </a>
             </div>

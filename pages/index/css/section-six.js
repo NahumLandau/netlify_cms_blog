@@ -21,6 +21,8 @@ const Styles = styled.div`
     flex-direction: row-reverse;
     list-style: none;
     padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   li {
     width: 25%;
