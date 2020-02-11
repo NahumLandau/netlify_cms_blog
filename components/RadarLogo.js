@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Devices} from "../layouts/styled-components";
 
 const RadarLogo = () => {
   return (
@@ -106,5 +107,8 @@ const Styles = styled.div`
     height: 65%;
     animation: elevate 2s ease-in-out forwards alternate;
     animation-iteration-count: 2;
+  }
+  @media (${Devices.laptop}) {
+    transform: scale(0.7);
   }
 `;

@@ -17,7 +17,7 @@ const Styles = styled.div`
     text-align: center;
     letter-spacing: 0.451238px;
     text-transform: uppercase;
-    margin: 0 312px 46px;
+    margin: 0 0 46px;
   }
   .shadow-effect {
     position: relative;
@@ -53,13 +53,14 @@ const Styles = styled.div`
     transform: translateX(-100%) rotate(3deg);
   }
 
-  @media (${Devices.mobile}) {
+  @media (${Devices.tablet}) {
     h2 {
       font-size: 30px;
       line-height: 30px;
       margin: 0 20px 25px;
     }
-
+  }
+  @media (${Devices.mobile}) {
     .videoWrapper {
       position: relative;
       padding-bottom: 56.25%; /* 16:9 */

@@ -25,7 +25,7 @@ const Schedule: NextPage<IScheduleProps> = props => {
           </Fade>
         </header>
         <div className="schedule-table">
-          <h4 className="schedule-table-heading">May 15</h4>
+          {/* <h4 className="schedule-table-heading">May 15</h4> */}
 
           <div className="timeslot track-header stick-header">
             <div className="track-header-label">Day 1</div>
@@ -83,14 +83,14 @@ Schedule.getInitialProps = async () => {
 export default Schedule;
 
 const Break = ({time}) => (
-  <div className="timeslot">
+  <div className="timeslot break">
     <div className="timeslot-label">
       <span className="start-time"> {time}</span>
     </div>
     <div className="timeslot-elements">
       <div className="slot" data-slot-detail="">
         <div className="color-line"></div>
-        <div className="slot-content general break">
+        <div className="slot-content general">
           <h5 className="slot-title">Break</h5>
         </div>
       </div>
@@ -101,7 +101,7 @@ const Break = ({time}) => (
 const OneSpeaker = ({time, speaker}) => {
   if (!speaker) return;
 
-  const {first_name, last_name, company, subject, image} = speaker;
+  const {first_name, last_name, company, subject, image, language = "he"} = speaker;
   return (
     <div className="timeslot">
       <div className="timeslot-label">
@@ -112,7 +112,7 @@ const OneSpeaker = ({time, speaker}) => {
           <div className="color-line"></div>
           <div className="slot-content-even">
             <h5 className="slot-title">{subject}</h5>
-            <span className="slot-language">EN</span>
+            <span className="slot-language">{language}</span>
             <ul className="slot-speakers">
               <li>
                 <div className="speaker-img" style={{backgroundImage: `url(..${image})`}}></div>
@@ -137,13 +137,13 @@ const Speakers = ({time, speakers}) => {
       </div>
       <div className="timeslot-elements">
         {speakers.map(s => {
-          const {first_name, last_name, company, subject, image, type} = s;
+          const {first_name, last_name, company, subject, image, type, language = "he"} = s;
           return (
             <div className={`slot ${type}`}>
               <div className="color-line"></div>
               <div className="slot-content-even">
                 <h5 className="slot-title">{subject}</h5>
-                <span className="slot-language">HE</span>
+                <span className="slot-language">{language}</span>
                 <ul className="slot-speakers">
                   <li>
                     <div className="speaker-img" style={{backgroundImage: `url(..${image})`}}></div>
@@ -186,7 +186,8 @@ const Styles = styled.div`
   .schedule-table {
     margin-bottom: 90px;
     width: 80%;
-    margin: 0 auto;
+    margin: 40px auto;
+    border: 1px solid #e7e7e7;
   }
   .schedule-table-heading {
     margin: 10px 0 20px;
@@ -316,7 +317,10 @@ const Styles = styled.div`
   .slot-content.general .slot-title {
     text-align: center;
   }
-  .slot-content.general.break {
+  .timeslot.break {
+    flex-direction: row;
+  }
+  .break .slot-content.general {
     background: #000000;
     color: #ffffff;
   }
@@ -403,12 +407,13 @@ const Styles = styled.div`
     font-size: 11px;
     right: 15px;
     top: 20px;
+    text-transform: uppercase;
   }
 
   .service-description {
     margin-top: 15px;
   }
-  @media (${Devices.mobile}) {
+  @media (${Devices.tablet}) {
     header {
       min-height: 120px;
       height: 120px;
@@ -416,7 +421,50 @@ const Styles = styled.div`
     header h1 {
       font-size: 37px;
       margin-left: 20px;
-      margin-top: 10px;
+      margin-top: 60px;
+    }
+    .timeslot.track-header {
+      display: none;
+    }
+    .timeslot-elements {
+      flex-direction: column;
+    }
+    .timeslot-elements .slot {
+      border-bottom: 1px solid #e7e7e7;
+      border-left: 1px solid #e7e7e7;
+    }
+  }
+  @media (${Devices.mobile}) {
+    .schedule-table {
+      border-right-width: 2px;
+    }
+    .timeslot {
+      display: flex;
+      flex-direction: column;
+    }
+    .timeslot-elements {
+      margin-left: 0;
+    }
+    .timeslot-label {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      font-weight: 700;
+      padding: 10px;
+      border-bottom: 1px solid #e7e7e7;
+    }
+    .break .timeslot-label {
+      width: 50%;
+      line-height: 1.2;
+    }
+    .break .timeslot-elements {
+      width: 100%;
+    }
+    .timeslot-label {
+      position: sticky;
+      top: 52px;
+      background: #f7f7f7;
+      z-index: 10;
     }
   }
 `;

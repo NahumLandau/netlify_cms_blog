@@ -25,11 +25,13 @@ const Styles = styled.div`
 
   .tickets-wrapper .ticket {
     width: 295px;
+    min-width: 230px;
     position: relative;
     min-height: 195px;
     color: black;
     background: #f6f6f6;
     text-transform: capitalize;
+    margin: 0 10px;
   }
   .ticket div {
     margin-top: 20px;
@@ -122,6 +124,12 @@ const Styles = styled.div`
   .tickets-wrapper .desc:last-child {
     border-bottom: none;
   }
+  @media (${Devices.tablet}) {
+    .tickets-wrapper .ticket {
+      margin: 0 10px;
+      min-width: 230px;
+    }
+  }
 
   @media (${Devices.mobile}) {
     .section-seven {
@@ -138,6 +146,7 @@ const Styles = styled.div`
     }
     .tickets-wrapper .ticket {
       width: 100%;
+      margin: 0;
       margin-bottom: 20px;
     }
   }

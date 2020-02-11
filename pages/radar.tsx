@@ -127,6 +127,7 @@ const Styles = styled.div`
     margin: 50px auto;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
     width: 970px;
+    max-width: 100%;
     padding: 15px;
   }
   h3 {
@@ -216,6 +217,7 @@ const Styles = styled.div`
   }
   .posts {
     width: 900px;
+    max-width: 100%;
     margin: 0 auto;
   }
   article {
@@ -265,8 +267,16 @@ const Styles = styled.div`
   }
   .contributors ul {
     display: flex;
+    flex-wrap: wrap;
     width: 80%;
     margin: 0 auto;
+    padding: 0;
+  }
+
+  @media (${Devices.tablet}) {
+    .contributors ul {
+      width: 100%;
+    }
   }
 
   @media (${Devices.mobile}) {

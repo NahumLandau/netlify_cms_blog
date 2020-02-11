@@ -22,6 +22,12 @@ collections:
           widget: "image",
           allow_multiple: false,
         }
+      - {
+          label: "Language",
+          name: "language",
+          widget: "select",
+          options: ["he", "en"],
+        }
   - name: "updates"
     label: "Updates"
     folder: "content/updates"

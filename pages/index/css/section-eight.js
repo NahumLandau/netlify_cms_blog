@@ -10,6 +10,7 @@ const Styles = styled.div`
     background-image: url(/img/sponsors-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: right;
   }
   h2 {
     font-style: normal;

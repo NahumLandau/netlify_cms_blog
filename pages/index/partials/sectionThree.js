@@ -17,18 +17,12 @@ const SectionThree = () => {
             <h2 className="orange">Try, Start, Keep or Stop?</h2>
 
             <p>
-              Tikal’s Tech Radar summarizes the usage and opinions gathered from
-              our experts’ research about current trends and technologies. The
-              radar presents four rings: Try, Start, Keep and Stop and 4
-              domains: Backend, Frontend, DevOps and Mobile. During Tech Radar
-              Day 2020 We will focus on the Try and Start rings, in order to
-              provide you with information and hands-on experience in
-              cutting-edge technologies.
+              Tikal’s Tech Radar summarizes the usage and opinions gathered from our experts’ research about current
+              trends and technologies. The radar presents four rings: Try, Start, Keep and Stop and 4 domains: Backend,
+              Frontend, DevOps and Mobile. During Tech Radar Day 2020 We will focus on the Try and Start rings, in order
+              to provide you with information and hands-on experience in cutting-edge technologies.
             </p>
-            <a
-              className="get-tickets-button hide-in-mobile"
-              href="tikal/radar/index.html"
-            >
+            <a className="get-tickets-button hide-in-mobile" href="/radar">
               EXPLORE THE RADAR
             </a>
           </div>

@@ -160,6 +160,15 @@ const Styles = styled.div`
       -o-transform: translateY(0px);
     }
   }
+  @media (${Devices.laptop}) {
+    .section-one-container >div:nth-child(1){
+      left: 0;
+      width:60%;
+    }
+    .section-one > div:nth-child(1) > .text {
+      margin-left: 0px;
+    }
+  }
 
   @media (${Devices.mobile}) {
     .section-one {

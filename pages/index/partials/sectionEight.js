@@ -17,7 +17,11 @@ const SectionEight = props => {
           startups and tech companies.
         </p>
 
-        <a className="get-tickets-button m-semi-bold" href="" target="_blank">
+        <a
+          className="get-tickets-button m-semi-bold"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdZP6u-sqo2-l-JfJNTtS0P5eAJ3yqD-CfwnhP32FcMIihS8w/viewform"
+          target="_blank"
+        >
           BECOME A SPONSOR
         </a>
 

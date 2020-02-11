@@ -58,6 +58,16 @@ const Styles = styled.div`
     font-weight: bold;
     transition: 1s all;
   }
+  @media (${Devices.tablet}) {
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .right img {
+      max-width: 100%;
+    }
+  }
 
   @media (${Devices.mobile}) {
     .section-three {

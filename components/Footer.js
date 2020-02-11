@@ -196,7 +196,11 @@ const Styles = styled.div`
     top: -110px;
     margin-right: 80px;
   }
-
+  @media (${Devices.tablet}) {
+    .radar-wrapper {
+      display: none;
+    }
+  }
   @media (${Devices.mobile}) {
     .footer {
       padding: 40px 20px 100px;

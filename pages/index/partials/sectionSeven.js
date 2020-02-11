@@ -33,7 +33,7 @@ const SectionSeven = () => {
 
         <div className="tickets-wrapper">
           {passes.map(pass => {
-            const { type, isActive, price, ticketsLeft, endDate } = pass;
+            const {type, isActive, price, ticketsLeft, endDate} = pass;
             return (
               <Fade right distance="20px" key={price}>
                 <div className={`ticket ${!isActive ? "disabled" : ""}`}>
@@ -52,7 +52,7 @@ const SectionSeven = () => {
                     <div className="buy-tickets-wrapper">
                       <a
                         className="get-tickets-button"
-                        href="https://www.eventbrite.com/e/fullstack-tech-radar-day-tickets-55203831145#tickets"
+                        href="https://www.eventbrite.com/e/tech-radar-day-2020-tickets-86701092301"
                         target="_blank"
                       >
                         Get Tickets

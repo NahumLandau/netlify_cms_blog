@@ -1,16 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
-import { Devices } from "../layouts/styled-components";
+import {Devices} from "../layouts/styled-components";
 
-const Person = ({
-  first_name,
-  last_name,
-  company,
-  image,
-  position,
-  subject
-}) => {
+const Person = ({first_name, last_name, company, image, position, subject}) => {
   return (
     <Styles>
       <Fade top distance="10px">
@@ -45,6 +38,7 @@ const Styles = styled.li`
   box-sizing: border-box;
   position: relative;
   margin-bottom: 20px;
+  min-width: 350px;
 
   > div {
     cursor: pointer;

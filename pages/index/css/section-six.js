@@ -85,6 +85,18 @@ const Styles = styled.div`
     margin: 0 auto;
     margin-top: 80px;
   }
+  @media (${Devices.laptop}) {
+    .speakers {
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: row;
+    }
+    li {
+      min-width: 360px;
+      max-width: 360px;
+      height: 360px;
+    }
+  }
 
   @media (${Devices.mobile}) {
     .section-six {
@@ -98,6 +110,7 @@ const Styles = styled.div`
     }
     li {
       width: 100%;
+      max-width: 100%;
     }
   }
 `;

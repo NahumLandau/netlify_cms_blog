@@ -28,10 +28,7 @@ const SectionOne = () => {
             </h3>
 
             <div className="get-tickets-btn">
-              <a
-                href="https://www.eventbrite.com/e/fullstack-tech-radar-day-tickets-55203831145#tickets"
-                target="_blank"
-              >
+              <a href="https://www.eventbrite.com/e/tech-radar-day-2020-tickets-86701092301" target="_blank">
                 get tickets
               </a>
             </div>

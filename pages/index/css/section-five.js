@@ -35,6 +35,7 @@ const Styles = styled.div`
     font-size: 16px;
     line-height: 20px;
     margin: 0 auto 47px auto;
+    max-width: 100%;
   }
   .domains {
     display: flex;
