@@ -71,6 +71,7 @@ collections:
               "Mobile",
               "Techniques",
               "Platforms",
+              "Machine learning"
             ],
           multiple: true,
         }

@@ -36,7 +36,7 @@ Home.getInitialProps = async () => {
   // get all speakers
   let ctx = require.context("../../content/speakers", false, /\.md$/);
   let keys = ctx.keys();
-  const speakers = keys.map(ctx);
+  const speakers = keys.map(ctx).map(s => s.attributes);
 
   // get all sponsors
   ctx = require.context("../../content/sponsors", false, /\.md$/);

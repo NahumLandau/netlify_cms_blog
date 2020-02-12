@@ -135,6 +135,9 @@ const Styles = styled.div`
     .section-seven {
       height: auto;
       padding-bottom: 40px;
+      width: 80%;
+      margin: 0 auto;
+      background: none;
     }
     h2 {
       font-size: 30px;
@@ -148,6 +151,9 @@ const Styles = styled.div`
       width: 100%;
       margin: 0;
       margin-bottom: 20px;
+    }
+    .tickets-wrapper .ticket .buy-tickets-wrapper {
+      background-color: #f5c653;
     }
   }
 `;

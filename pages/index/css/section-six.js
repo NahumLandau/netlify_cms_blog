@@ -102,17 +102,19 @@ const Styles = styled.div`
 
   @media (${Devices.mobile}) {
     .section-six {
-      padding: 50px 0 60px;
+      padding: 0px 0 60px;
     }
     h2 {
       font-size: 45.5px;
+      display: none;
     }
-    ul.speakers {
-      flex-direction: column;
+    ul {
+      margin-top: 0;
     }
     li {
-      width: 100%;
-      max-width: 100%;
+      width: 50%;
+      max-width: 50%;
+      min-width: 50%;
     }
   }
 `;

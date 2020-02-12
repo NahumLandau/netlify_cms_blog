@@ -72,6 +72,7 @@ const Footer = () => {
             <img src="../img/meetup-icon.png" />
           </a>
         </div>
+        <img className="mobile-footer-logo" src="img/octopus contact.png" />
       </section>
     </Styles>
   );
@@ -196,6 +197,9 @@ const Styles = styled.div`
     top: -110px;
     margin-right: 80px;
   }
+  .mobile-footer-logo {
+    display: none;
+  }
   @media (${Devices.tablet}) {
     .radar-wrapper {
       display: none;
@@ -203,7 +207,9 @@ const Styles = styled.div`
   }
   @media (${Devices.mobile}) {
     .footer {
-      padding: 40px 20px 100px;
+      padding: 40px 20px 150px;
+      background: #2c2828;
+      overflow: hidden;
     }
     .footer h2 {
       text-align: center;
@@ -247,6 +253,13 @@ const Styles = styled.div`
       margin: 0 auto;
       margin-top: 20px;
       text-align: center;
+    }
+    .mobile-footer-logo {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translate(-50%);
+      display: block;
     }
   }
 `;

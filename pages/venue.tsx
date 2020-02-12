@@ -101,13 +101,25 @@ const Styles = styled.div`
       margin: 0;
       margin-bottom: 10px;
       margin-top: 30px;
-      height: 450px;
-      color: #000000;
+      height: 820px;
+      color: #ffffff;
+    }
+    .venue > div:nth-child(1) {
+      height: 50%;
+      position: relative;
     }
     .info {
-      width: 70%;
+      width: 90%;
       left: 0;
-      background: rgba(255, 255, 255, 0.5);
+      background: #2c2929;
+      position: static;
+      color: #ffffff;
+      transform: none;
+      box-sizing: border-box;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 30px;
+      border-bottom: 1px solid #ffffff;
     }
     h1 {
       margin: 0;

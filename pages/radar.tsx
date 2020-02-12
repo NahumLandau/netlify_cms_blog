@@ -81,7 +81,7 @@ const Radar: NextPage<IRadarProps> = props => {
                   <hr />
                   <img src={image} />
                   <ReactMarkDown source={content} />
-                  <ul>
+                  <ul className="tags">
                     {tags.map(tag => (
                       <li key={`${title}_${tag}`}>{tag}</li>
                     ))}
@@ -152,6 +152,7 @@ const Styles = styled.div`
     width: 970px;
     max-width: 100%;
     padding: 15px;
+    box-sizing: border-box;
   }
   h3 {
     margin: 20px 0 35px 5px;
@@ -193,7 +194,7 @@ const Styles = styled.div`
   }
   .trends ul {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 0;
     margin: 50px 0;
   }
@@ -219,6 +220,8 @@ const Styles = styled.div`
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
     text-decoration: none;
     cursor: pointer;
+    height: 100%;
+    box-sizing: border-box;
   }
   .trends li a > span {
     min-height: 120px;
@@ -248,6 +251,7 @@ const Styles = styled.div`
     background-color: #ffffff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
     padding: 30px 32px 0;
+    color: #4a4a4a;
   }
   article h3 {
     overflow: hidden;
@@ -256,14 +260,24 @@ const Styles = styled.div`
     font-size: 20px;
     line-height: 1.12;
   }
+  article p {
+    line-height: 1.5;
+    margin: 20px 0 10px;
+    font-weight: 300;
+  }
   article hr {
     border-top: 1px solid #eee;
     margin: 22px 0;
   }
   article img {
-    max-width: 40%;
+    /* max-width: 40%; */
   }
-  article ul {
+  article ol li,
+  article ul:not(.tags) li {
+    margin: 10px 0;
+    color: #4a4a4a;
+  }
+  article ul.tags {
     overflow: hidden;
     margin: 20px 0 15px !important;
     padding: 18px 0 0 !important;
@@ -271,7 +285,7 @@ const Styles = styled.div`
     border-top: solid 1px #e8e7e7;
     display: flex;
   }
-  .posts article ul li {
+  .posts article ul.tags li {
     margin-right: 5px;
     margin-bottom: 1px;
     padding: 0 15px;
