@@ -39,7 +39,7 @@ const SectionSix = props => {
             logEvent("Become a Speaker", "Cliked", "Home page");
           }}
         >
-          BECOME A SPEAKER 
+          BECOME A SPEAKER
         </a>
       </div>
     </Styles>
