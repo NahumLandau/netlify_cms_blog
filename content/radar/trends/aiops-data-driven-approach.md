@@ -30,5 +30,6 @@ content: >-
 image: /img/alops.png
 tags:
   - Devops
+  - Machine learning
 ---
 
