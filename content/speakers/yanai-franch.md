@@ -1,6 +1,6 @@
 ---
 first_name: Yanai
-last_name: Franch
+last_name: Franchi
 company: Tikal
 position: Backend
 subject: sksckds
