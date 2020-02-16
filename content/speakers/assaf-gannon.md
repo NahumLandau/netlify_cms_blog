@@ -13,5 +13,7 @@ description: >-
 subject: abc
 image: /img/assaf-gannon.jpg
 language: he
+twitter: 'https://twitter.com'
+linkedin: 'https://www.linkedin.com'
 ---
 
