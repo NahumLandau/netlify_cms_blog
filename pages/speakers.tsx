@@ -6,7 +6,7 @@ import Fade from "react-reveal/Fade";
 import Person from "../components/Person";
 import {Devices} from "../layouts/styled-components";
 import SpeakerModal from "../components/SpeakerModal";
-
+import Domains from "../components/Domains";
 interface ISpeakersProps {
   speakers: Array<any>;
 }
@@ -24,7 +24,7 @@ const Speakers: NextPage<ISpeakersProps> = props => {
             <h1>SPEAKERS</h1>
           </Fade>
         </header>
-
+        <Domains />
         <ul className="speakers">
           {speakers.map(speaker => {
             return (
@@ -72,12 +72,20 @@ const Styles = styled.div`
     top: 150px;
     position: relative;
   }
+  .domains {
+    width: 60%;
+    margin: 40px auto !important;
+  }
   .speakers {
     display: flex;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
-    padding: 50px 0;
+    padding: 0 0 50px;
     flex-wrap: wrap;
+    justify-content: center;
+  }
+  .speakers li {
+    width: 25%;
   }
 
   @media (${Devices.mobile}) {
@@ -94,6 +102,11 @@ const Styles = styled.div`
     }
     ul {
       flex-direction: column;
+    }
+    .speakers li {
+      width: 100%;
+      margin: 0;
+      padding: 0;
     }
   }
 `;

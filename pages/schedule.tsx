@@ -49,19 +49,24 @@ const Schedule: NextPage<IScheduleProps> = props => {
             const {is_break, time, speakers = []} = slot.attributes;
 
             if (is_break) {
-              return <Break time={time} />;
+              return <Break time={time} key={time} />;
             }
             const fullSpeakers = Object.keys(speakers).map(speaker => {
-              console.log(speaker);
               return {
                 type: speaker,
                 ...getFullSpeaker(speakers[speaker])
               };
             });
             if (fullSpeakers && fullSpeakers.length == 1) {
-              return <OneSpeaker time={time} speaker={fullSpeakers[0]} />;
+              return (
+                <OneSpeaker
+                  time={time}
+                  speaker={fullSpeakers[0]}
+                  key={`${fullSpeakers[0].first_name}_${fullSpeakers[0].last_name}`}
+                />
+              );
             }
-            return <Speakers time={time} speakers={fullSpeakers} />;
+            return <Speakers time={time} speakers={fullSpeakers} key={time} />;
           })}
         </div>
       </Styles>
@@ -140,7 +145,7 @@ const Speakers = ({time, speakers}) => {
         {speakers.map(s => {
           const {first_name, last_name, company, subject, image, type, language = "he"} = s;
           return (
-            <div className={`slot ${type}`}>
+            <div className={`slot ${type}`} key={`${first_name}_${last_name}`}>
               <div className="color-line"></div>
               <div className="slot-content-even">
                 <h5 className="slot-title">{subject}</h5>

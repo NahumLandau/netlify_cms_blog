@@ -37,28 +37,6 @@ const Styles = styled.div`
     margin: 0 auto 47px auto;
     max-width: 100%;
   }
-  .domains {
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-    margin: 0 20px;
-  }
-  .domains div {
-    text-align: center;
-  }
-  .domains span {
-    display: block;
-    text-align: center;
-    color: #221f1f;
-    font-size: 20px;
-    font-weight: 600;
-    text-transform: capitalize;
-    margin-top: 10px;
-  }
-  .domains img {
-    margin-bottom: 10px;
-    max-width: 135px;
-  }
 
   @media (${Devices.mobile}) {
     h3 {
@@ -69,24 +47,6 @@ const Styles = styled.div`
     }
     h4 {
       text-align: center;
-    }
-    .domains {
-      flex-direction: row;
-      flex-wrap: wrap;
-      width: 100%;
-      justify-content: center;
-    }
-    p {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 20px;
-    }
-    .domains div {
-      margin: 20px 0;
-      width: 50%;
-    }
-    .domains img {
-      max-width: 100%;
     }
   }
 `;

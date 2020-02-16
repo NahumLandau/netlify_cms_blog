@@ -26,27 +26,25 @@ const SpeakerModal = props => {
   };
 
   return (
-    <Modal
-      isOpen={true}
-      onAfterOpen={() => {}}
-      onRequestClose={() => {}}
-      style={customStyles}
-      contentLabel="Speaker Modal"
-    >
+    <Modal isOpen={true} style={customStyles} contentLabel="Speaker Modal">
       <Styles>
         <div className="wrapper">
           <a className="close-modal" onClick={onModalClosed}>
             X
           </a>
+
           <div className="image">
             <img src={image} />
           </div>
+
           <div className="content">
             <h3>
               {`${first_name} ${last_name}`} <span>{`${position}, ${company}`}</span>
             </h3>
             <p>{description}</p>
+
             <hr />
+
             {(twitter || linkedin) && <span>{`Follow ${first_name}`}</span>}
             {twitter && (
               <a href={twitter} target="_blank">

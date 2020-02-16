@@ -31,42 +31,6 @@ const Styles = styled.div`
     height: 407px;
     transition: all 0.5s ease;
   }
-  li .overlay {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background: rgba(232, 114, 33, 0.84);
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: all 0.5s ease;
-    color: #ffffff;
-  }
-  li:hover .overlay {
-    opacity: 1;
-  }
-  li .image {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
-  }
-  li .overlay span {
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  li .overlay small {
-    font-size: 20px;
-    font-weight: 400;
-  }
-
-  li img {
-    max-width: 100%;
-  }
 
   .get-tickets-button {
     position: relative;

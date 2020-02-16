@@ -1,9 +1,9 @@
 import React from "react";
 import Styles from "../css/section-six";
 import Fade from "react-reveal/Fade";
-import {shuffle} from "../../../helpers";
 import {logEvent} from "../../../helpers/analytics";
 import sortBy from "lodash.sortby";
+import Person from "../../../components/Person";
 
 const SectionSix = props => {
   const {speakers = []} = props;
@@ -17,17 +17,7 @@ const SectionSix = props => {
         <ul className="speakers">
           {sortedSpeakers.map((speaker, index) => {
             const {first_name, last_name, image, company} = speaker;
-            return (
-              <Fade key={first_name + last_name} top delay={(index + 1) * 200} distance="20px">
-                <li key={`${first_name}-${last_name}`}>
-                  <div className="image" style={{backgroundImage: `url(..${image})`}}></div>
-                  <div className="overlay">
-                    <span>{`${first_name} ${last_name}`}</span>
-                    <small>{company}</small>
-                  </div>
-                </li>
-              </Fade>
-            );
+            return <Person key={first_name + last_name} index={index} {...speaker} />;
           })}
         </ul>
 
