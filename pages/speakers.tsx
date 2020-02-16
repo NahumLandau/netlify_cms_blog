@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import Person from "../components/Person";
 import {Devices} from "../layouts/styled-components";
+import SpeakerModal from "../components/SpeakerModal";
 
 interface ISpeakersProps {
   speakers: Array<any>;
@@ -12,6 +13,8 @@ interface ISpeakersProps {
 
 const Speakers: NextPage<ISpeakersProps> = props => {
   const {speakers} = props;
+
+  const [currSpeakerDisplay, setCurrSpeaker] = React.useState(null);
 
   return (
     <MainLayout>
@@ -24,9 +27,17 @@ const Speakers: NextPage<ISpeakersProps> = props => {
 
         <ul className="speakers">
           {speakers.map(speaker => {
-            return <Person {...speaker.attributes} key={speaker.attributes.last_name} />;
+            return (
+              <Person
+                {...speaker.attributes}
+                key={`${speaker.attributes.first_name}_${speaker.attributes.last_name}`}
+                onClickFunc={() => setCurrSpeaker({...speaker.attributes})}
+              />
+            );
           })}
         </ul>
+
+        {currSpeakerDisplay && <SpeakerModal speaker={currSpeakerDisplay} onModalClosed={() => setCurrSpeaker(null)} />}
       </Styles>
     </MainLayout>
   );
@@ -46,10 +57,10 @@ const Styles = styled.div`
   header {
     position: relative;
     min-height: 300px;
-    padding-top: 87px;
-    background-image: url(../img/middle-bg.jpg);
+    margin-top: 95px;
+    background-image: url(../img/speakers-bg.png);
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: right center;
     background-size: cover;
   }
   header h1 {
@@ -58,7 +69,8 @@ const Styles = styled.div`
     margin-left: 115px;
     text-shadow: 1px 1px 2px #000000;
     font-weight: 900;
-    margin-top: 150px;
+    top: 150px;
+    position: relative;
   }
   .speakers {
     display: flex;
@@ -72,11 +84,13 @@ const Styles = styled.div`
     header {
       min-height: 120px;
       height: 120px;
+      margin-top: 57px;
     }
     header h1 {
       font-size: 37px;
       margin-left: 20px;
-      margin-top: 60px;
+      top: 60px;
+      position: relative;
     }
     ul {
       flex-direction: column;

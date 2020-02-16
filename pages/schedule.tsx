@@ -52,6 +52,7 @@ const Schedule: NextPage<IScheduleProps> = props => {
               return <Break time={time} />;
             }
             const fullSpeakers = Object.keys(speakers).map(speaker => {
+              console.log(speaker);
               return {
                 type: speaker,
                 ...getFullSpeaker(speakers[speaker])

@@ -3,13 +3,13 @@ import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import {Devices} from "../layouts/styled-components";
 
-const Person = ({first_name, last_name, company, image, position, subject}) => {
+const Person = ({first_name, last_name, company, image, position, subject, onClickFunc = null}) => {
   return (
     <Styles>
       <Fade top distance="10px">
-        <div key={`${first_name}_${last_name}`}>
+        <div onClick={onClickFunc}>
           <div className="head">
-            <img src={image} />
+            <img style={{backgroundImage: `url(..${image})`}} />
             <div className="overlay"></div>
             <div className="name">
               <h3>
@@ -74,6 +74,9 @@ const Styles = styled.li`
   }
   .head img {
     width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
     transform: scale(1.1);
     transition: all 0.3s ease;
   }
