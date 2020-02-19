@@ -14,7 +14,7 @@ const Schedule: NextPage<IScheduleProps> = props => {
   console.log(props);
   const {schedule = [], speakers = []} = props;
 
-  const getFullSpeaker = speaker => (speakers.find(s => s.attributes.last_name === speaker) || {}).attributes;
+  const getFullSpeaker = id => (speakers.find(s => s.attributes.id[0] == id.slice(2, -2)) || {}).attributes;
 
   return (
     <MainLayout>
@@ -51,13 +51,15 @@ const Schedule: NextPage<IScheduleProps> = props => {
             if (is_break) {
               return <Break time={time} key={time} />;
             }
-            const fullSpeakers = Object.keys(speakers).map(speaker => {
-              console.log(speakers[speaker], speakers, speaker);
-              return {
-                type: speaker,
-                ...getFullSpeaker(speakers[speaker])
-              };
-            });
+            const fullSpeakers = Object.keys(speakers)
+              .filter(speaker => speakers[speaker])
+              .map(speaker => {
+                return {
+                  type: speaker,
+                  ...getFullSpeaker(speakers[speaker])
+                };
+              });
+
             if (fullSpeakers && fullSpeakers.length == 1) {
               return (
                 <OneSpeaker

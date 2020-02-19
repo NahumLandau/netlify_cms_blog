@@ -19,8 +19,10 @@
 
       var CategoriesControl = createClass({
         handleChange: function(e) {
-          console.log(e.target.value)
-          this.props.onChange([uuidv4()]);
+          console.log(this.props)
+          if(!this.props.value){
+            this.props.onChange([uuidv4()]);
+          }
         },
 
         render: function() {
