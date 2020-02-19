@@ -6,7 +6,7 @@ last_name: Gannon
 company: Tikal
 position: Tech Lead
 description: >-
-  Lorem ipsum dolor sit amet, consectetcur adipiscing elit, sed do eiusmod
+  Lorem ipsum dolor sit amet, consdectetcur adipiscing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua. Udt enim ad minim veniam,
   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
