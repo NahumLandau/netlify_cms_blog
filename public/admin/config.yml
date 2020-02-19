@@ -30,8 +30,8 @@ collections:
           widget: "select",
           options: ["he", "en"],
         }
-      - { label: "twitter", name: "twitter", widget: "string" }
-      - { label: "linkedin", name: "linkedin", widget: "string" }
+      - { label: "twitter", name: "twitter", widget: "string", required: false}
+      - { label: "linkedin", name: "linkedin", widget: "string", required: false }
 
   - name: "sponsors"
     label: "Sponsors"
@@ -91,10 +91,10 @@ collections:
         name: "speakers"
         widget: "object"
         fields: 
-        - {label: "Backend/ML", name: "backend", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false} 
-        - {label: "DevOps", name: "devops", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false} 
-        - {label: "Frontend", name: "frontend", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false} 
-        - {label: "Mobile&Things", name: "mobile", widget: "relation", collection: "speakers", valueField: "last_name", searchFields:["first_name", "last_name"], required: false}
+        - {label: "Backend/ML", name: "backend", widget: "relation", collection: "speakers", valueField: "id", searchFields:["first_name", "last_name"], displayFields:["first_name", "last_name"], required: false} 
+        - {label: "DevOps", name: "devops", widget: "relation", collection: "speakers", valueField: "id", searchFields:["first_name", "last_name"],, displayFields:["first_name", "last_name"], required: false} 
+        - {label: "Frontend", name: "frontend", widget: "relation", collection: "speakers", valueField: "id", searchFields:["first_name", "last_name"],displayFields:["first_name", "last_name"],required: false} 
+        - {label: "Mobile&Things", name: "mobile", widget: "relation", collection: "speakers", valueField: "id", searchFields:["first_name", "last_name"], displayFields:["first_name", "last_name"], required: false}
       - {label: "Mark as break", name: "is_break", widget: "boolean", required: false}
   - name: "tickets"
     label: "Tickets"
