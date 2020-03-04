@@ -4,9 +4,9 @@ import {logEvent} from "../../../helpers/analytics";
 
 const SectionEight = props => {
   const {sponsors = []} = props;
-  const sponsor = sponsors.filter(s => s.attributes.type === "sponsor");
-  const exhibitors = sponsors.filter(s => s.attributes.type === "exhibitor");
-  const media = sponsors.filter(s => s.attributes.type === "media");
+  const sponsor = sponsors.filter(s => s.type === "sponsor");
+  const exhibitors = sponsors.filter(s => s.type === "exhibitor");
+  const media = sponsors.filter(s => s.type === "media");
 
   return (
     <Styles>
@@ -61,21 +61,21 @@ const SectionEight = props => {
         <h3>SPONSORS</h3>
         <ul className="list-inline sponsors">
           {sponsor.map(partner => (
-            <Partner key={partner.attributes.name} {...partner.attributes} />
+            <Partner key={partner.name} {...partner.attributes} />
           ))}
         </ul>
 
         <h3>EXHIBITORS</h3>
         <ul className="list-inline sponsors">
           {exhibitors.map(partner => (
-            <Partner key={partner.attributes.name} {...partner.attributes} />
+            <Partner key={partner.name} {...partner.attributes} />
           ))}
         </ul>
 
         <h3>MEDIA</h3>
         <ul className="list-inline media">
           {media.map(partner => (
-            <Partner key={partner.attributes.name} {...partner.attributes} />
+            <Partner key={partner.name} {...partner.attributes} />
           ))}
         </ul>
 

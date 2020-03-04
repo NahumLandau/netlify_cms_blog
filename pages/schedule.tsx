@@ -4,17 +4,15 @@ import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 import {Devices} from "../layouts/styled-components";
 import {NextPage} from "next";
+import {fetchApiData} from "../helpers";
 
 interface IScheduleProps {
   schedule: Array<any>;
-  speakers: Array<any>;
 }
 
 const Schedule: NextPage<IScheduleProps> = props => {
   console.log(props);
-  const {schedule = [], speakers = []} = props;
-
-  const getFullSpeaker = id => (speakers.find(s => s.attributes.id[0] == id.slice(2, -2)) || {}).attributes;
+  const {schedule = []} = props;
 
   return (
     <MainLayout>
@@ -46,30 +44,29 @@ const Schedule: NextPage<IScheduleProps> = props => {
           </div>
 
           {schedule.map(slot => {
-            const {is_break, time, speakers = []} = slot.attributes;
+            const {is_a_break, time} = slot;
 
-            if (is_break) {
+            if (is_a_break) {
               return <Break time={time} key={time} />;
             }
-            const fullSpeakers = Object.keys(speakers)
-              .filter(speaker => speakers[speaker])
-              .map(speaker => {
-                return {
-                  type: speaker,
-                  ...getFullSpeaker(speakers[speaker])
-                };
-              });
 
-            if (fullSpeakers && fullSpeakers.length == 1) {
+            const backEnd = slot.BackEnd.map(speaker => ({...speaker, type: "backend"}));
+            const frontEnd = slot.FrontEnd.map(speaker => ({...speaker, type: "frontend"}));
+            const devOps = slot.DevOps.map(speaker => ({...speaker, type: "devops"}));
+            const mobile = slot.Mobile.map(speaker => ({...speaker, type: "mobile"}));
+            const slotSpeakers = [...backEnd, ...devOps, ...frontEnd, ...mobile];
+
+            console.log(slotSpeakers);
+            if (slotSpeakers && slotSpeakers.length == 1) {
               return (
                 <OneSpeaker
                   time={time}
-                  speaker={fullSpeakers[0]}
-                  key={`${fullSpeakers[0].first_name}_${fullSpeakers[0].last_name}`}
+                  speaker={slotSpeakers[0]}
+                  key={`${slotSpeakers[0].first_name}_${slotSpeakers[0].last_name}`}
                 />
               );
             }
-            return <Speakers time={time} speakers={fullSpeakers} key={time} />;
+            return <Speakers time={time} speakers={slotSpeakers} key={time} />;
           })}
         </div>
       </Styles>
@@ -78,15 +75,9 @@ const Schedule: NextPage<IScheduleProps> = props => {
 };
 
 Schedule.getInitialProps = async () => {
-  let ctx = require.context("../content/speakers", false, /\.md$/);
-  let keys = ctx.keys();
-  const speakers = keys.map(ctx);
+  const schedule = await fetchApiData("schedules?_sort=time:asc");
 
-  ctx = require.context("../content/schedule", false, /\.md$/);
-  keys = ctx.keys();
-  const schedule = keys.map(ctx);
-
-  return {speakers, schedule};
+  return {schedule};
 };
 
 export default Schedule;
@@ -111,6 +102,7 @@ const OneSpeaker = ({time, speaker}) => {
   if (!speaker) return;
 
   const {first_name, last_name, company, subject, image, language = "he"} = speaker;
+  const img = process.env.BASE_URL + image[0].url;
   return (
     <div className="timeslot">
       <div className="timeslot-label">
@@ -124,7 +116,7 @@ const OneSpeaker = ({time, speaker}) => {
             <span className="slot-language">{language}</span>
             <ul className="slot-speakers">
               <li>
-                <div className="speaker-img" style={{backgroundImage: `url(..${image})`}}></div>
+                <div className="speaker-img" style={{backgroundImage: `url(${img})`}}></div>
                 <p className="speaker-name">
                   {`${first_name} ${last_name}`}
                   <span className="speaker-position"> {company}</span>
@@ -147,6 +139,7 @@ const Speakers = ({time, speakers}) => {
       <div className="timeslot-elements">
         {speakers.map(s => {
           const {first_name, last_name, company, subject, image, type, language = "he"} = s;
+          const img = process.env.BASE_URL + image[0].url;
           return (
             <div className={`slot ${type}`} key={`${first_name}_${last_name}`}>
               <div className="color-line"></div>
@@ -155,7 +148,7 @@ const Speakers = ({time, speakers}) => {
                 <span className="slot-language">{language}</span>
                 <ul className="slot-speakers">
                   <li>
-                    <div className="speaker-img" style={{backgroundImage: `url(..${image})`}}></div>
+                    <div className="speaker-img" style={{backgroundImage: `url(${img})`}}></div>
                     <p className="speaker-name">
                       {`${first_name} ${last_name}`}
                       <span className="speaker-position"> {company}</span>

@@ -8,7 +8,7 @@ const Person = ({first_name, last_name, company, image, position, subject, index
     <Styles>
       <Fade key={first_name + last_name} top delay={(index + 1) * 200} distance="20px">
         <div className="person" key={`${first_name}-${last_name}`} onClick={onClickFunc}>
-          <div className="image" style={{backgroundImage: `url(..${image})`}}></div>
+          <div className="image" style={{backgroundImage: `url(${image})`}}></div>
           <div className="overlay">
             <span>{`${first_name} ${last_name}`}</span>
             <small>{company}</small>

@@ -12,10 +12,10 @@ const SectionSeven = props => {
 
         <div className="tickets-wrapper">
           {tickets.map(ticket => {
-            const {is_active, title, tickets_left, end_date} = ticket.attributes;
+            const {is_available, title, tickets_left, end_date} = ticket;
             return (
               <Fade right distance="20px" key={title}>
-                <div className={`ticket ${!is_active ? "disabled" : ""}`}>
+                <div className={`ticket ${!is_available ? "disabled" : ""}`}>
                   <div className="ticket-title">{title}</div>
                   <div className="ticket-description">
                     <div className="desc">
@@ -23,7 +23,7 @@ const SectionSeven = props => {
                       <div className="desc-second-line">{end_date}</div>
                     </div>
                   </div>
-                  {is_active && (
+                  {is_available && (
                     <div className="buy-tickets-wrapper">
                       <a
                         className="get-tickets-button"

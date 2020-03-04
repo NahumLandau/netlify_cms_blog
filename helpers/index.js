@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const urlFromFileName = fileName => {
   return fileName
     .split("")
@@ -11,4 +13,9 @@ export const shuffle = a => {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+};
+
+export const fetchApiData = async endPoint => {
+  const res = await axios.get(`${process.env.BASE_URL}/${endPoint}`);
+  return res.data;
 };

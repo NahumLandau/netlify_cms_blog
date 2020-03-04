@@ -17,7 +17,8 @@ const SectionSix = props => {
         <ul className="speakers">
           {sortedSpeakers.map((speaker, index) => {
             const {first_name, last_name, image, company} = speaker;
-            return <Person key={first_name + last_name} index={index} {...speaker} />;
+            const img = process.env.BASE_URL + image[0].url;
+            return <Person key={first_name + last_name} index={index} {...speaker} image={img} />;
           })}
         </ul>
 

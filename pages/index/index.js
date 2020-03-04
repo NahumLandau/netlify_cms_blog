@@ -1,6 +1,7 @@
 import React from "react";
 import MainLayout from "../../layouts/main";
 import styled from "styled-components";
+import {fetchApiData} from "../../helpers";
 
 import SectionOne from "./partials/sectionOne";
 import SectionTwo from "./partials/sectionTwo";
@@ -34,19 +35,13 @@ const Home = props => (
 
 Home.getInitialProps = async () => {
   // get all speakers
-  let ctx = require.context("../../content/speakers", false, /\.md$/);
-  let keys = ctx.keys();
-  const speakers = keys.map(ctx).map(s => s.attributes);
+  const speakers = await fetchApiData("speakers");
 
   // get all sponsors
-  ctx = require.context("../../content/sponsors", false, /\.md$/);
-  keys = ctx.keys();
-  const sponsors = keys.map(ctx);
+  const sponsors = await fetchApiData("sponsors");
 
   // get all tickets
-  ctx = require.context("../../content/tickets", false, /\.md$/);
-  keys = ctx.keys();
-  const tickets = keys.map(ctx);
+  const tickets = await fetchApiData("tickets");
 
   return {speakers, sponsors, tickets};
 };

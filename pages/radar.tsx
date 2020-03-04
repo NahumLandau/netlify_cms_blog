@@ -5,10 +5,10 @@ import styled from "styled-components";
 import ReactMarkDown from "react-markdown";
 import {Devices} from "../layouts/styled-components";
 import {NextSeo} from "next-seo";
+import {fetchApiData} from "../helpers";
 
 interface IRadarProps {
   trends: Array<any>;
-  contributors: Array<any>;
 }
 declare global {
   interface Window {
@@ -17,7 +17,8 @@ declare global {
 }
 
 const Radar: NextPage<IRadarProps> = props => {
-  const {trends = [], contributors = []} = props;
+  const {trends = []} = props;
+  console.log(trends);
   const articlesRefs = [];
   const scrollToRef = ref =>
     window.scrollTo({
@@ -52,13 +53,14 @@ const Radar: NextPage<IRadarProps> = props => {
               <h3>Trends</h3>
               <ul>
                 {trends.map((trend, index) => {
-                  const {title, image} = trend.attributes;
+                  const {title, image} = trend;
+                  const img = process.env.BASE_URL + image[0].url;
                   articlesRefs.push(React.useRef(null));
                   return (
                     <li key={title} onClick={() => scrollToRef(articlesRefs[index])}>
                       <a>
                         <span>
-                          <img src={image} />
+                          <img src={img} />
                         </span>
                         <div>
                           <hr />
@@ -74,16 +76,17 @@ const Radar: NextPage<IRadarProps> = props => {
 
           <section className="posts">
             {trends.map((trend, index) => {
-              const {title, image, content, tags} = trend.attributes;
+              const {title, image, content, trend_tags} = trend;
+              const img = process.env.BASE_URL + image[0].url;
               return (
                 <article ref={articlesRefs[index]} key={title}>
                   <h3>{title}</h3>
                   <hr />
-                  <img src={image} />
+                  <img src={img} />
                   <ReactMarkDown source={content} />
                   <ul className="tags">
-                    {tags.map(tag => (
-                      <li key={`${title}_${tag}`}>{tag}</li>
+                    {trend_tags.map(tag => (
+                      <li key={`${title}_${tag.name}`}>{tag.name}</li>
                     ))}
                   </ul>
                 </article>
@@ -128,16 +131,9 @@ const Radar: NextPage<IRadarProps> = props => {
   );
 };
 
-Radar.getInitialProps = () => {
-  let ctx = require.context("../content/radar/trends", false, /\.md$/);
-  let keys = ctx.keys();
-  const trends = keys.map(ctx);
-
-  ctx = require.context("../content/radar/contributors", false, /\.md$/);
-  keys = ctx.keys();
-  const contributors = keys.map(ctx);
-
-  return {trends, contributors};
+Radar.getInitialProps = async () => {
+  const trends = await fetchApiData("trends");
+  return {trends};
 };
 
 export default Radar;

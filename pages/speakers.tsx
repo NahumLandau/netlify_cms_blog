@@ -7,13 +7,14 @@ import Person from "../components/Person";
 import {Devices} from "../layouts/styled-components";
 import SpeakerModal from "../components/SpeakerModal";
 import Domains from "../components/Domains";
+import {fetchApiData} from "../helpers";
 interface ISpeakersProps {
   speakers: Array<any>;
 }
 
 const Speakers: NextPage<ISpeakersProps> = props => {
   const {speakers} = props;
-
+  console.log(speakers);
   const [currSpeakerDisplay, setCurrSpeaker] = React.useState(null);
 
   return (
@@ -27,11 +28,13 @@ const Speakers: NextPage<ISpeakersProps> = props => {
         <Domains />
         <ul className="speakers">
           {speakers.map(speaker => {
+            const img = `${process.env.BASE_URL}${speaker.image[0].url}`;
             return (
               <Person
-                {...speaker.attributes}
-                key={`${speaker.attributes.first_name}_${speaker.attributes.last_name}`}
-                onClickFunc={() => setCurrSpeaker({...speaker.attributes})}
+                {...speaker}
+                image={img}
+                key={`${speaker.first_name}_${speaker.last_name}`}
+                onClickFunc={() => setCurrSpeaker({...speaker, image: img})}
               />
             );
           })}
@@ -44,10 +47,7 @@ const Speakers: NextPage<ISpeakersProps> = props => {
 };
 
 Speakers.getInitialProps = async () => {
-  const ctx = require.context("../content/speakers", false, /\.md$/);
-  const keys = ctx.keys();
-  const speakers = keys.map(ctx);
-
+  const speakers = await fetchApiData("speakers");
   return {speakers};
 };
 
