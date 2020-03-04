@@ -98,6 +98,7 @@ const Nav = () => {
         .logo {
           position: absolute;
           left: 10%;
+          margin-top: -5px;
         }
         ul {
           display: flex;
@@ -107,6 +108,7 @@ const Nav = () => {
         }
         nav > ul {
           padding: 4px 16px;
+          margin-top: 3px;
         }
         li {
           display: flex;
@@ -114,7 +116,7 @@ const Nav = () => {
         }
         li a {
           font-size: 16px;
-          font-weight: 300;
+          font-weight: 600;
           -webkit-transition: all 0.3s;
           transition: all 0.3s;
           text-transform: uppercase;

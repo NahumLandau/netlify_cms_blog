@@ -19,7 +19,7 @@ const SectionOne = () => {
             <h2>Full Day of Full Stack</h2>
 
             <h3>
-              <div>May 6th, 2020</div>
+              <div>May 18th, 2020</div>
               <div>David Intercontinental, Tel-Aviv</div>
               <div className="discount-notification">
                 Early bird tickets are on sale now.

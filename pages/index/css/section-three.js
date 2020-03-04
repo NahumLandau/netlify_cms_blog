@@ -16,6 +16,15 @@ const Styles = styled.div`
     text-align: left;
     margin-left: 40px;
   }
+  .right a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .right a img {
+    max-width: 80%;
+  }
   h3 {
     text-align: left;
     font-size: 50px;
@@ -64,8 +73,9 @@ const Styles = styled.div`
       align-items: center;
       justify-content: center;
     }
-    .right img {
+    .right a img {
       max-width: 100%;
+      min-width: 80%;
     }
   }
 

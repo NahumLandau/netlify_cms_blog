@@ -38,7 +38,7 @@ const SectionThree = () => {
         <Fade right distance="50px">
           <div className="right">
             <a href="/radar">
-              <img src="../img/radar-sample.svg" />
+              <img src="../img/radar-sample.jpg" />
             </a>
           </div>
         </Fade>
