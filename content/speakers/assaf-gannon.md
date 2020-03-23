@@ -1,8 +1,7 @@
 ---
 id:
   - 121711f5-37b6-4099-891f-58112cdfc58b
-first_name: Assaf
-last_name: Gannon
+name: Assaf Gannon
 company: Tikal
 position: Tech Lead
 description: >-
