@@ -1,8 +1,7 @@
 ---
 id:
   - 6448c55e-557c-4113-8c5b-0de969a7ddb9
-first_name: Moty
-last_name: Bar-Tov
+name: Moty Bar Tov
 company: Tikal
 position: Mobile
 description: s
