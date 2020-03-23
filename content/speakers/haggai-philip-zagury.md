@@ -1,8 +1,7 @@
 ---
 id:
   - 3a287c8e-a88f-43cd-9010-521624d04599
-first_name: Haggai Philip
-last_name: zagury
+name: Haggay Philip Zagury
 company: Tikal
 position: DevOps
 description: cc
