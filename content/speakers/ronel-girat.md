@@ -1,8 +1,7 @@
 ---
 id:
   - 65b40500-7d31-4b96-aac7-b9a6f74ca666
-first_name: Ronel
-last_name: Girat
+name: Ronel Girat
 company: Tikal
 position: Mobile
 description: d
