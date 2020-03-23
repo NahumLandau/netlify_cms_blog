@@ -1,7 +1,7 @@
 ---
 id:
   - 7e6240bd-e362-4d79-b957-bdea3244edbe
-name: Sigal Shaarabni
+name: Sigal Shaharabani
 company: Tikal
 position: backend
 description: a
