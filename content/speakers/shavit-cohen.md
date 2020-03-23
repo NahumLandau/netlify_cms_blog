@@ -1,8 +1,7 @@
 ---
 id:
   - ff8442cf-9a42-4743-b311-8ca179e8397a
-first_name: Shavit
-last_name: Cohen
+name: Shavit Cohen
 company: Tikal
 position: Frontend
 description: d
